@@ -17,7 +17,9 @@ URL: https://github.com/UBESP-DCTV/redcap.gpt,
     https://ubesp-dctv.github.io/redcap.gpt/
 BugReports: https://github.com/UBESP-DCTV/redcap.gpt/issues
 Imports: 
+    dplyr,
     here,
+    purrr,
     REDCapR,
     REDCapTidieR
 Suggests: 

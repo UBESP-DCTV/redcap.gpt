@@ -3,7 +3,7 @@ install.packages("pak")
 dev_pkgs <- c(
   "checkmate", "devtools", "magick", "testthat", "tidyverse"
 )
-prj_pkgs <- c("REDCapR")
+prj_pkgs <- c("here", "REDCapR")
 pak::pkg_install(c(dev_pkgs, prj_pkgs), dependencies = TRUE)
 
 use_description()

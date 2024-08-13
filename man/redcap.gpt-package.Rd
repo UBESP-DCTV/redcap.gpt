@@ -10,6 +10,15 @@
 
 What the package does (one paragraph).
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/UBESP-DCTV/redcap.gpt}
+  \item \url{https://ubesp-dctv.github.io/redcap.gpt/}
+  \item Report bugs at \url{https://github.com/UBESP-DCTV/redcap.gpt/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Corrado Lanera \email{corrado.lanera@ubep.unipd.it} (\href{https://orcid.org/0000-0002-0520-7428}{ORCID})
 

@@ -1,19 +1,11 @@
+library(tidyverse)
 library(redcap.gpt)
 library(gpteasyr)
-library(dplyr)
 library(janitor)
-library(stringr)
-library(jsonlite)
+library(stringi)
 
 form <- "followup_postoperatorio_14_30_60_giorno_po"
 
-fetch_form(form) |> 
-  filter(row_number() == 2)
-
-fetch_form(form) |> 
-  filter(row_number() == 2) |> 
-  remove_empty("cols") |> 
-  glimpse()
 
 sys <- compose_sys_prompt(
   role = compose_sys_role(),
@@ -42,15 +34,20 @@ res <- fetch_form(form) |>
      seed = 1234
   )
 
-res[["gpt_res"]][[1]] |> 
-  str_remove_all("```(json)?") |> 
-  str_squish() |> 
-  jsonlite::fromJSON() |> 
-  purrr::list_flatten() |> 
-  bind_cols() |> 
+res_extended <- res |> 
   mutate(
-    across(
-      matches("sensazione_.*_risposta"),
-      \(x) stringi::stri_enc_toascii(str_to_lower(x)) == "si"
-    )
-  )
+    gpt_parsed = map(gpt_res, \(x) {
+      x |>
+        gpt_to_tibble() |> 
+        mutate(
+          across(
+            matches("sensazione_.*_risposta"),
+            parse_sensazione
+          )
+        )      
+    })
+  ) |> 
+  unnest(cols = gpt_parsed)
+
+
+res_extended$momento_risposta

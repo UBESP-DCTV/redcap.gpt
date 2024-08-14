@@ -1,5 +1,6 @@
 # redcap.gpt (development version)
 
+* Add `parse_*` to parse the gpt cathegories extracted form the answers (i.e., * can be sensazione, momento, andamento, impatto)
 * Add `gpt_to_tibble()` to parse gpt JSON hierarchical responses into a suitable, flat, tibble.
 * Add `fetch_redcap()` and `fetch_form()` to fetch data from the REDCap project.
 * Provided templates (`.Renviron-template`, and `dev/redcap-credentials.csv`) and example usage (`analyses/connect.R`) to connect to the REDCap project.

@@ -5,9 +5,16 @@ test_that("fetch_redcap works", {
 
   # evaluation
   full <- fetch_redcap()
+  forms <- fetch_redcap(
+    forms = c(
+      "followup_postoperatorio_14_30_60_giorno_po",
+      "visita_followup_postoperatorio_90_giorno_po"
+    )
+  )
 
   # expectation
   expect_tibble(full, ncols = 10, nrows = 12)
+  expect_tibble(forms, ncols = 10, nrows = 2)
 })
 
 test_that("fetch_form works", {

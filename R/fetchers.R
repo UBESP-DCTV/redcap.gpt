@@ -26,13 +26,22 @@ fetch_form <- function(
 #'
 #' @param .uri (chr, default: get_redcap_uri()) The REDCap URI.
 #' @param .token (chr, default: get_redcap_token()) The REDCap token.
+#' @param forms (chr) vector of REDCap forms to fetch.
 #'
 #' @return (tbl_df) The REDCap DB.
 #' @export
 #'
 #' @examples
 #' \donttest{
-#'   fetch_redcap() |> 
+#'   fetch_redcap() |>
+#'     str(1)
+#'
+#'   fetch_redcap(
+#'     forms = c(
+#'       "followup_postoperatorio_14_30_60_giorno_po",
+#'       "visita_followup_postoperatorio_90_giorno_po"
+#'     )
+#'   ) |>
 #'     str(1)
 #' }
 fetch_redcap <- function(

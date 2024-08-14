@@ -3,7 +3,7 @@ compose_sys_role <- function() {
 }
 
 compose_sys_context <- function() {
-  ""
+  "Le risposte provengono dallo studio COPPER, che esamina l'impatto della crioanalgesia sulla gestione del dolore e sul recupero nei pazienti di età superiore ai 12 anni sottoposti a riparazione del pectus excavatum."
 }
 
 compose_usr_task <- function() {

@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">redcap.gpt</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9003</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9004</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,6 +56,10 @@
 <dt id="arg--token">.token<a class="anchor" aria-label="anchor" href="#arg--token"></a></dt>
 <dd><p>(chr, default: get_redcap_token()) The REDCap token.</p></dd>
 
+
+<dt id="arg-forms">forms<a class="anchor" aria-label="anchor" href="#arg-forms"></a></dt>
+<dd><p>(chr) vector of REDCap forms to fetch.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -65,7 +69,18 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
-<span class="r-in"><span>  <span class="fu">fetch_redcap</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span></span>
+<span class="r-in"><span>  <span class="fu">fetch_redcap</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in REDCapTidieR::read_redcap(redcap_uri = .uri, token = .token,     forms = forms):</span> <span style="color: #BB0000;">✖</span> The token is an empty string, not a valid 32-character hexademical</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span>   value.</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> API token: ``</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="fu">fetch_redcap</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    forms <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>      <span class="st">"followup_postoperatorio_14_30_60_giorno_po"</span>,</span></span>
+<span class="r-in"><span>      <span class="st">"visita_followup_postoperatorio_90_giorno_po"</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in REDCapTidieR::read_redcap(redcap_uri = .uri, token = .token,     forms = forms):</span> <span style="color: #BB0000;">✖</span> The token is an empty string, not a valid 32-character hexademical</span>
 <span class="r-err co"><span class="r-pr">#&gt;</span>   value.</span>

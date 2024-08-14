@@ -1,12 +1,15 @@
 install.packages("pak")
 
 dev_pkgs <- c(
-  "checkmate", "devtools", "magick", "testthat", "tidyverse"
+  "checkmate", "cpp11", "devtools", "dplyr", "here", "magick",
+  "purrr", "REDCapR", "testthat", "tidyverse", "withr"
 )
-prj_pkgs <- c("dplyr", "here", "purrr", "REDCapR", "REDCapTidieR")
-gh_pkgs <- c("CorradoLanera/gpteasyr")
+prj_pkgs <- c("REDCapTidieR")
+
+dev_gh_pkgs <- c("CorradoLanera/gpteasyr")
+proj_gh_pkgs <- NULL
 pak::pkg_install(
-  c(dev_pkgs, prj_pkgs, gh_pkgs),
+  c(dev_pkgs, prj_pkgs, dev_gh_pkgs, proj_gh_pkgs),
   dependencies = TRUE,
   upgrade = TRUE
 )
@@ -32,7 +35,11 @@ usethis::use_dev_version()
 
 dev_pkgs |> purrr::walk(\(x) usethis::use_package(x, type = "Suggests"))
 prj_pkgs |> purrr::walk(use_package)
-gh_pkgs |> 
+
+dev_gh_pkgs |> 
+  stringr::str_remove_all("^[^/]+/") |> 
+  purrr::walk(\(x) use_dev_package(x, type = "Suggests"))
+proj_gh_pkgs |> 
   stringr::str_remove_all("^[^/]+/") |> 
   purrr::walk(use_dev_package)
 renv::snapshot()

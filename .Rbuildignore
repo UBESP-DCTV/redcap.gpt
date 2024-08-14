@@ -9,3 +9,7 @@
 ^docs$
 ^pkgdown$
 ^\.github$
+^\.Renviron-template$
+^\.vscode
+^analyses$
+^dev$

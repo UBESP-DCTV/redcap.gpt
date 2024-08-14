@@ -1,16 +1,19 @@
 install.packages("pak")
 
+meta_pkg <- c("tidyverse")
 dev_pkgs <- c(
-  "checkmate", "cpp11", "devtools", "dplyr", "here", "janitor",
-  "jsonlite", "magick", "purrr", "REDCapR", "stringr", "testthat",
-  "tidyverse", "withr"
+  "devtools", "here", "janitor", "magick", "REDCapR", "testthat",
+  "tibble", "tidyr", "withr"
 )
-prj_pkgs <- c("REDCapTidieR")
-
+prj_pkgs <- c(
+  "checkmate", "dplyr", "jsonlite", "purrr", "REDCapTidieR", "stringi",
+   "stringr"
+)
 dev_gh_pkgs <- c("CorradoLanera/gpteasyr")
 proj_gh_pkgs <- NULL
+
 pak::pkg_install(
-  c(dev_pkgs, prj_pkgs, dev_gh_pkgs, proj_gh_pkgs),
+  c(meta_pkg, dev_pkgs, prj_pkgs, dev_gh_pkgs, proj_gh_pkgs),
   dependencies = TRUE,
   upgrade = TRUE
 )

@@ -14,6 +14,8 @@ fetch_redcap(
 \item{.uri}{(chr, default: get_redcap_uri()) The REDCap URI.}
 
 \item{.token}{(chr, default: get_redcap_token()) The REDCap token.}
+
+\item{forms}{(chr) vector of REDCap forms to fetch.}
 }
 \value{
 (tbl_df) The REDCap DB.
@@ -23,7 +25,15 @@ Fetch REDCap DB
 }
 \examples{
 \donttest{
-  fetch_redcap() |> 
+  fetch_redcap() |>
+    str(1)
+
+  fetch_redcap(
+    forms = c(
+      "followup_postoperatorio_14_30_60_giorno_po",
+      "visita_followup_postoperatorio_90_giorno_po"
+    )
+  ) |>
     str(1)
 }
 }

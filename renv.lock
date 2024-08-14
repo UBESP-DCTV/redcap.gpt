@@ -263,6 +263,16 @@
       "Repository": "CRAN",
       "Hash": "5d8225445acb167abf7797de48b2ee3c"
     },
+    "cpp11": {
+      "Package": "cpp11",
+      "Version": "0.4.7",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "5a295d7d963cc5035284dcdbaf334f4e"
+    },
     "crayon": {
       "Package": "crayon",
       "Version": "1.5.3",

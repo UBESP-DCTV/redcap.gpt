@@ -1,8 +1,9 @@
 install.packages("pak")
 
 dev_pkgs <- c(
-  "checkmate", "cpp11", "devtools", "dplyr", "here", "magick",
-  "purrr", "REDCapR", "testthat", "tidyverse", "withr"
+  "checkmate", "cpp11", "devtools", "dplyr", "here", "janitor",
+  "jsonlite", "magick", "purrr", "REDCapR", "stringr", "testthat",
+  "tidyverse", "withr"
 )
 prj_pkgs <- c("REDCapTidieR")
 

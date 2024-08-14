@@ -25,10 +25,13 @@ Suggests:
     dplyr,
     gpteasyr (>= 0.5.0),
     here,
+    janitor,
+    jsonlite,
     magick,
     purrr,
     REDCapR,
     spelling,
+    stringr,
     testthat (>= 3.0.0),
     tidyverse,
     withr

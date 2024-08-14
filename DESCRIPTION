@@ -18,6 +18,7 @@ URL: https://github.com/UBESP-DCTV/redcap.gpt,
 BugReports: https://github.com/UBESP-DCTV/redcap.gpt/issues
 Imports: 
     dplyr,
+    gpteasyr (>= 0.5.0),
     here,
     purrr,
     REDCapR,
@@ -34,3 +35,5 @@ Encoding: UTF-8
 Language: en-US
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
+Remotes:  
+    CorradoLanera/gpteasyr

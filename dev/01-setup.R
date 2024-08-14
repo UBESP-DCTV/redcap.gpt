@@ -4,7 +4,12 @@ dev_pkgs <- c(
   "checkmate", "devtools", "magick", "testthat", "tidyverse"
 )
 prj_pkgs <- c("dplyr", "here", "purrr", "REDCapR", "REDCapTidieR")
-pak::pkg_install(c(dev_pkgs, prj_pkgs), dependencies = TRUE)
+gh_pkgs <- c("CorradoLanera/gpteasyr")
+pak::pkg_install(
+  c(dev_pkgs, prj_pkgs, gh_pkgs),
+  dependencies = TRUE,
+  upgrade = TRUE
+)
 
 use_description()
 use_mit_license()
@@ -27,6 +32,9 @@ usethis::use_dev_version()
 
 dev_pkgs |> purrr::walk(\(x) usethis::use_package(x, type = "Suggests"))
 prj_pkgs |> purrr::walk(use_package)
+gh_pkgs |> 
+  stringr::str_remove_all("^[^/]+/") |> 
+  purrr::walk(use_dev_package)
 renv::snapshot()
 
 usethis::use_tidy_description()

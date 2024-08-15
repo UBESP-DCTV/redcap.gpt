@@ -100,7 +100,7 @@ query_gpt_on_redcap_instrument <- function(
         from_str = .data[["impatto_risposta"]],
         to_fct = .data[[impatto_response]]
       )
-    ) |> dplyr::glimpse()
+    ) |> 
     dplyr::mutate(
       !!calmo_response := .data[["sensazione_calmo_risposta"]],
       !!calmo_motivation := .data[["sensazione_calmo_motivazione"]],

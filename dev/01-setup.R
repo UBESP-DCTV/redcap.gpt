@@ -3,11 +3,11 @@ install.packages("pak")
 meta_pkg <- c("tidyverse")
 dev_pkgs <- c(
   "devtools", "here", "janitor", "magick", "REDCapR", "testthat",
-  "tibble", "tidyr", "withr"
+  "tibble", "withr"
 )
 prj_pkgs <- c(
-  "checkmate", "dplyr", "jsonlite", "purrr", "REDCapTidieR", "stringi",
-   "stringr"
+  "checkmate", "dplyr", "forcats", "jsonlite", "purrr", "REDCapTidieR", "stringi",
+   "stringr", "tidyr", "usethis"
 )
 dev_gh_pkgs <- c("CorradoLanera/gpteasyr")
 proj_gh_pkgs <- NULL

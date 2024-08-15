@@ -1,5 +1,7 @@
 source("renv/activate.R")
 
+options(tidyverse.quiet = TRUE)
+
 if (
   interactive() &&
   requireNamespace("usethis", quietly = TRUE) &&

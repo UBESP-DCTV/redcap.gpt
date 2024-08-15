@@ -61,7 +61,6 @@ query_gpt_on_redcap_instrument <- function(
     ) |>
     tidyr::unnest(cols = dplyr::all_of("gpt_res"))
 
-
   calmo_response <- stringr::str_glue("{instrument}_text_feeling___1")
   calmo_motivation <- stringr::str_glue("{instrument}_text_feeling_1_motivation")
   irritato_response <- stringr::str_glue("{instrument}_text_feeling___2")
@@ -78,9 +77,6 @@ query_gpt_on_redcap_instrument <- function(
   andamento_motivation <- stringr::str_glue("{instrument}_text_trend_motivation")
   impatto_response <- stringr::str_glue("{instrument}_text_impact")
   impatto_motivation <- stringr::str_glue("{instrument}_text_impact_motivation")
-
-
-
 
   db_queried |>
     dplyr::mutate(
@@ -104,7 +100,7 @@ query_gpt_on_redcap_instrument <- function(
         from_str = .data[["impatto_risposta"]],
         to_fct = .data[[impatto_response]]
       )
-    ) |>
+    ) |> dplyr::glimpse()
     dplyr::mutate(
       !!calmo_response := .data[["sensazione_calmo_risposta"]],
       !!calmo_motivation := .data[["sensazione_calmo_motivazione"]],

@@ -1,8 +1,4 @@
-library(tidyverse)
 library(redcap.gpt)
-library(gpteasyr)
-library(janitor)
-library(stringi)
 
 full <- fetch_redcap()
 fup_143060 <- fetch_form("followup_postoperatorio_14_30_60_giorno_po")

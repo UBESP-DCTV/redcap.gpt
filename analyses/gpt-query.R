@@ -4,50 +4,15 @@ library(gpteasyr)
 library(janitor)
 library(stringi)
 
-form <- "followup_postoperatorio_14_30_60_giorno_po"
+full <- fetch_redcap()
+fup_143060 <- fetch_form("followup_postoperatorio_14_30_60_giorno_po")
+fup_90 <- fetch_form("visita_followup_postoperatorio_90_giorno_po")
 
+note_fup_to_be_pushed <- fup_143060 |> 
+  query_gpt_on_redcap_instrument("note_fup")
 
-sys <- compose_sys_prompt(
-  role = compose_sys_role(),
-  context = compose_sys_context()
-)
-usr <- compose_usr_prompt(
-  task = compose_usr_task(),
-  instructions = compose_usr_instructions(),
-  output = compose_usr_output(),
-  style = compose_usr_style(),
-  examples = compose_usr_example(),
-  closing = compose_usr_closing(),
-  delimiter = "#####"
-)
+comments_fup_to_be_pushed <- fup_143060 |> 
+  query_gpt_on_redcap_instrument("comments_fup")
 
-res <- fetch_form(form) |> 
-  dplyr::select(
-    record_id, redcap_form_instance, 
-    starts_with("note_fup")
-  ) |> 
-  filter(!is.na(note_fup)) |> 
-  query_gpt_on_column(
-    "note_fup",
-     sys, usr,
-     closing = "Procedi passo-passo per assicurarti di restituire la migliore risposta corretta possibile.",
-     seed = 1234
-  )
-
-res_extended <- res |> 
-  mutate(
-    gpt_parsed = map(gpt_res, \(x) {
-      x |>
-        gpt_to_tibble() |> 
-        mutate(
-          across(
-            matches("sensazione_.*_risposta"),
-            parse_sensazione
-          )
-        )      
-    })
-  ) |> 
-  unnest(cols = gpt_parsed)
-
-
-res_extended$momento_risposta
+details_fup_to_be_pushed <- fup_90 |> 
+  query_gpt_on_redcap_instrument("details_fup")

@@ -23,6 +23,7 @@ Imports:
     jsonlite,
     purrr,
     REDCapTidieR,
+    rlang,
     stringi,
     stringr,
     tidyr,

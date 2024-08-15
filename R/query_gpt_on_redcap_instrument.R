@@ -1,3 +1,12 @@
+#' Query GPT on REDCap instrument
+#'
+#' @param db (tbl_df) The REDCap DB for a single form.
+#' @param instrument (chr) The REDCap instrument of the form to query.
+#' @param model (chr, default: "gpt-4o-mini") The GPT model to use.
+#' @param seed (int, default: 1234) The seed for the GPT model.
+#'
+#' @return (tbl_df) The REDCap DB with GPT responses parsed.
+#' @export
 query_gpt_on_redcap_instrument <- function(
   db,
   instrument = c("note_fup", "comments_fup", "details_fup"),
@@ -12,19 +21,19 @@ query_gpt_on_redcap_instrument <- function(
     )) == 19
   )
   checkmate::assert_character(db[[instrument]])
-  
-  db_to_query <- db |> 
+
+  db_to_query <- db |>
     dplyr::select(
-      record_id, redcap_form_instance, 
+      dplyr::all_of(c("record_id", "redcap_form_instance")),
       dplyr::starts_with(instrument)
-    ) |> 
+    ) |>
     dplyr::filter(
       !is.na(.data[[instrument]]),
       !.data[[
         stringr::str_c(instrument, "_text_processed_record___1")
       ]]
     )
-  
+
   sys <- gpteasyr::compose_sys_prompt(
     role = compose_sys_role(),
     context = compose_sys_context()
@@ -39,17 +48,17 @@ query_gpt_on_redcap_instrument <- function(
     delimiter = "#####"
   )
 
-  db_queried <- db_to_query |> 
+  db_queried <- db_to_query |>
     gpteasyr::query_gpt_on_column(
       instrument,
        sys, usr,
        closing = compose_final_closing(),
        model = model,
        seed = seed
-    ) |> 
+    ) |>
     dplyr::mutate(
       gpt_res = purrr::map(.data[["gpt_res"]], gpt_to_tibble)
-    ) |> 
+    ) |>
     tidyr::unnest(cols = dplyr::all_of("gpt_res"))
 
 
@@ -73,7 +82,7 @@ query_gpt_on_redcap_instrument <- function(
 
 
 
-  db_queried |> 
+  db_queried |>
     dplyr::mutate(
       dplyr::across(
         dplyr::where(is.character),
@@ -95,24 +104,24 @@ query_gpt_on_redcap_instrument <- function(
         from_str = .data[["impatto_risposta"]],
         to_fct = .data[[impatto_response]]
       )
-    ) |> 
+    ) |>
     dplyr::mutate(
-      !!calmo_response := sensazione_calmo_risposta,
-      !!calmo_motivation := sensazione_calmo_motivazione,
-      !!irritato_response := sensazione_irritato_risposta,
-      !!irritato_motivation := sensazione_irritato_motivazione,
-      !!ansioso_response := sensazione_ansioso_risposta,
-      !!ansioso_motivation := sensazione_stanco_motivazione,
-      !!ottimista_response := sensazione_ottimista_risposta,
-      !!ottimista_motivation := sensazione_ottimista_motivazione,
-      !!demotivato_response := sensazione_demotivato_risposta,
-      !!demotivato_motivation := sensazione_demotivato_motivazione,
-      !!momento_response := momento_risposta,
-      !!momento_motivation := momento_motivazione,
-      !!andamento_response := andamento_risposta,
-      !!andamento_motivation := andamento_motivazione,
-      !!impatto_response := impatto_risposta,
-      !!impatto_motivation := impatto_motivazione
+      !!calmo_response := .data[["sensazione_calmo_risposta"]],
+      !!calmo_motivation := .data[["sensazione_calmo_motivazione"]],
+      !!irritato_response := .data[["sensazione_irritato_risposta"]],
+      !!irritato_motivation := .data[["sensazione_irritato_motivazione"]],
+      !!ansioso_response := .data[["sensazione_ansioso_risposta"]],
+      !!ansioso_motivation := .data[["sensazione_stanco_motivazione"]],
+      !!ottimista_response := .data[["sensazione_ottimista_risposta"]],
+      !!ottimista_motivation := .data[["sensazione_ottimista_motivazione"]],
+      !!demotivato_response := .data[["sensazione_demotivato_risposta"]],
+      !!demotivato_motivation := .data[["sensazione_demotivato_motivazione"]],
+      !!momento_response := .data[["momento_risposta"]],
+      !!momento_motivation := .data[["momento_motivazione"]],
+      !!andamento_response := .data[["andamento_risposta"]],
+      !!andamento_motivation := .data[["andamento_motivazione"]],
+      !!impatto_response := .data[["impatto_risposta"]],
+      !!impatto_motivation := .data[["impatto_motivazione"]]
     ) |>
     dplyr::select(-dplyr::all_of(c(
       "sensazione_calmo_risposta",
@@ -131,7 +140,7 @@ query_gpt_on_redcap_instrument <- function(
       "andamento_motivazione",
       "impatto_risposta",
       "impatto_motivazione"
-    ))) |> 
+    ))) |>
     dplyr::mutate(
       !!stringr::str_glue(
         "{instrument}_text_processed_record___1"

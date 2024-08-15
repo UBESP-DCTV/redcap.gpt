@@ -6,8 +6,8 @@ dev_pkgs <- c(
   "tibble", "withr"
 )
 prj_pkgs <- c(
-  "checkmate", "dplyr", "forcats", "jsonlite", "purrr", "REDCapTidieR", "stringi",
-   "stringr", "tidyr", "usethis"
+  "checkmate", "dplyr", "forcats", "jsonlite", "purrr", "REDCapTidieR",
+  "rlang", "stringi", "stringr", "tidyr", "usethis"
 )
 dev_gh_pkgs <- c("CorradoLanera/gpteasyr")
 proj_gh_pkgs <- NULL
@@ -34,8 +34,7 @@ usethis::use_github(
   organisation = "UBESP-DCTV", private = TRUE, protocol = "ssh"
 )
 usethis::use_pkgdown_github_pages()
-usethis::use_dev_version()
-
+usethis::use_tidy_eval()
 
 dev_pkgs |> purrr::walk(\(x) usethis::use_package(x, type = "Suggests"))
 prj_pkgs |> purrr::walk(use_package)

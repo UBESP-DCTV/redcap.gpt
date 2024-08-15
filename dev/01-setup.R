@@ -2,7 +2,7 @@ install.packages("pak")
 
 meta_pkg <- c("tidyverse")
 dev_pkgs <- c(
-  "devtools", "here", "janitor", "magick", "REDCapR", "testthat",
+  "devtools", "here", "janitor", "magick", "REDCapR", "rio", "testthat",
   "tibble", "withr"
 )
 prj_pkgs <- c(

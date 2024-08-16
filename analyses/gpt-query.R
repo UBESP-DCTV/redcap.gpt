@@ -10,14 +10,41 @@ fup_90 <- fetch_form("visita_followup_postoperatorio_90_giorno_po")
 note_fup_to_be_pushed <- fup_143060 |> 
   query_gpt_on_redcap_instrument("note_fup")
 note_fup_to_be_pushed |> 
-  export(here("output", "note_fup_to_be_pushed.xlsx"))
+  export(
+    here(
+      "output",
+       stringr::str_c(
+        lubridate::now() |>
+          stringr::str_remove_all("\\W"),
+        "_note_fup_to_be_pushed.xlsx"
+      )
+    )
+  )
 
 comments_fup_to_be_pushed <- fup_143060 |> 
   query_gpt_on_redcap_instrument("comments_fup")
 comments_fup_to_be_pushed |> 
-  export(here("output", "comments_fup_to_be_pushed.xlsx"))
+  export(
+    here(
+      "output",
+      stringr::str_c(
+        lubridate::now() |>
+          stringr::str_remove_all("\\W"),
+        "_comments_fup_to_be_pushed.xlsx"
+      )
+    )
+  )
 
 details_fup_to_be_pushed <- fup_90 |> 
   query_gpt_on_redcap_instrument("details_fup")
 details_fup_to_be_pushed |> 
-  export(here("output", "details_fup_to_be_pushed.xlsx"))
+  export(
+    here(
+      "output",
+      stringr::str_c(
+        lubridate::now() |>
+          stringr::str_remove_all("\\W"),
+      "_details_fup_to_be_pushed.xlsx"
+    )
+  )
+  )

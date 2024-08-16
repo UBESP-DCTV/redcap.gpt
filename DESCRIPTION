@@ -33,6 +33,7 @@ Suggests:
     gpteasyr (>= 0.5.0),
     here,
     janitor,
+    lubridate,
     magick,
     REDCapR,
     rio,

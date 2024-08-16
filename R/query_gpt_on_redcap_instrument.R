@@ -71,6 +71,9 @@ query_gpt_on_redcap_instrument <- function(
   ottimista_motivation <- stringr::str_glue("{instrument}_text_feeling_4_motivation")
   demotivato_response <- stringr::str_glue("{instrument}_text_feeling___5")
   demotivato_motivation <- stringr::str_glue("{instrument}_text_feeling_5_motivation")
+  stanco_response <- stringr::str_glue("{instrument}_text_feeling___6")
+  stanco_motivation <- stringr::str_glue("{instrument}_text_feeling_6_motivation")
+  
   momento_response <- stringr::str_glue("{instrument}_text_daytime")
   momento_motivation <- stringr::str_glue("{instrument}_text_daytime_motivation")
   andamento_response <- stringr::str_glue("{instrument}_text_trend")
@@ -100,18 +103,20 @@ query_gpt_on_redcap_instrument <- function(
         from_str = .data[["impatto_risposta"]],
         to_fct = .data[[impatto_response]]
       )
-    ) |> dplyr::glimpse()
+    ) |> 
     dplyr::mutate(
       !!calmo_response := .data[["sensazione_calmo_risposta"]],
       !!calmo_motivation := .data[["sensazione_calmo_motivazione"]],
       !!irritato_response := .data[["sensazione_irritato_risposta"]],
       !!irritato_motivation := .data[["sensazione_irritato_motivazione"]],
       !!ansioso_response := .data[["sensazione_ansioso_risposta"]],
-      !!ansioso_motivation := .data[["sensazione_stanco_motivazione"]],
+      !!ansioso_motivation := .data[["sensazione_ansioso_motivazione"]],
       !!ottimista_response := .data[["sensazione_ottimista_risposta"]],
       !!ottimista_motivation := .data[["sensazione_ottimista_motivazione"]],
       !!demotivato_response := .data[["sensazione_demotivato_risposta"]],
       !!demotivato_motivation := .data[["sensazione_demotivato_motivazione"]],
+      !!stanco_response := .data[["sensazione_stanco_risposta"]],
+      !!stanco_motivation := .data[["sensazione_stanco_motivazione"]],
       !!momento_response := .data[["momento_risposta"]],
       !!momento_motivation := .data[["momento_motivazione"]],
       !!andamento_response := .data[["andamento_risposta"]],
@@ -125,11 +130,13 @@ query_gpt_on_redcap_instrument <- function(
       "sensazione_irritato_risposta",
       "sensazione_irritato_motivazione",
       "sensazione_ansioso_risposta",
-      "sensazione_stanco_motivazione",
+      "sensazione_ansioso_motivazione",
       "sensazione_ottimista_risposta",
       "sensazione_ottimista_motivazione",
       "sensazione_demotivato_risposta",
       "sensazione_demotivato_motivazione",
+      "sensazione_stanco_risposta",
+      "sensazione_stanco_motivazione",
       "momento_risposta",
       "momento_motivazione",
       "andamento_risposta",
@@ -140,7 +147,7 @@ query_gpt_on_redcap_instrument <- function(
     dplyr::mutate(
       !!stringr::str_glue(
         "{instrument}_text_processed_record___1"
-      ) := TRUE
+      ) := 1L
     )
 }
 

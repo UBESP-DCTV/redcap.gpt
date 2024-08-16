@@ -3,7 +3,7 @@ test_that("parse_sensazione works", {
   res <- parse_sensazione(c("si", "no", "forse", NA))
 
   # test
-  expect_equal(res, c(TRUE, FALSE, FALSE, FALSE))
+  expect_equal(res, c(1, 0, 0, 0))
 })
 
 test_that("parse_gpt_fctr works on missing", {

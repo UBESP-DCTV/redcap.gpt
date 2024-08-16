@@ -14,7 +14,8 @@
 #' parse_sensazione("N/A")
 parse_sensazione <- function(x) {
   res <- stringi::stri_enc_toascii(stringr::str_to_lower(x)) == "si"
-  tidyr::replace_na(res, FALSE)
+  tidyr::replace_na(res, FALSE) |> 
+    as.integer()
 }
 
 #' Parser for GPT factors
@@ -61,5 +62,5 @@ parse_gpt_fctr <- function(from_str, to_fct) {
   }
 
   forcats::fct(res_str, .levels) |> 
-    forcats::fct_explicit_na("Non rilevato")
+    forcats::fct_na_value_to_level("Non rilevato")
 }

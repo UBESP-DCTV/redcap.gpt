@@ -22,7 +22,9 @@ test_that("query_gpt_on_redcap works", {
       max.rows = nrow(fup_143060),
       ncols = 22
     )
-  expect_true(all(note_fup[["note_fup_text_processed_record___1"]]))
+  expect_true(
+    all(note_fup[["note_fup_text_processed_record___1"]] == 1L)
+  )
   note_fup |> 
     dplyr::select(dplyr::where(is.logical)) |> 
     is.na() |> 
@@ -34,7 +36,9 @@ test_that("query_gpt_on_redcap works", {
       max.rows = nrow(fup_143060),
       ncols = 22
   )
-  expect_true(all(comments_fup[["comments_fup_text_processed_record___1"]]))
+  expect_true(
+    all(comments_fup[["comments_fup_text_processed_record___1"]] == 1L)
+  )
   comments_fup |> 
     dplyr::select(dplyr::where(is.logical)) |> 
     is.na() |> 
@@ -46,7 +50,9 @@ test_that("query_gpt_on_redcap works", {
       max.rows = nrow(fup_90),
       ncols = 22
     )
-  expect_true(all(comments_fup[["details_fup_text_processed_record___1"]]))
+  expect_true(
+    all(comments_fup[["details_fup_text_processed_record___1"]] == 1L)
+  )
   details_fup |> 
     dplyr::select(dplyr::where(is.logical)) |> 
     is.na() |> 

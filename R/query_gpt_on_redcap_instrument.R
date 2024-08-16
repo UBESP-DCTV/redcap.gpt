@@ -147,7 +147,7 @@ query_gpt_on_redcap_instrument <- function(
     dplyr::mutate(
       !!stringr::str_glue(
         "{instrument}_text_processed_record___1"
-      ) := TRUE
+      ) := 1L
     )
 }
 

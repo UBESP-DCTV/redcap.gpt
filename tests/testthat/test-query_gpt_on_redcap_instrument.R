@@ -17,13 +17,40 @@ test_that("query_gpt_on_redcap works", {
     query_gpt_on_redcap_instrument("details_fup")
 
   # tests
-  expect_tibble(note_fup, max.rows = nrow(fup_143060), ncols = 24)
+  note_fup |> 
+    expect_tibble(
+      max.rows = nrow(fup_143060),
+      ncols = 22
+    )
   expect_true(all(note_fup[["note_fup_text_processed_record___1"]]))
+  note_fup |> 
+    dplyr::select(dplyr::where(is.logical)) |> 
+    is.na() |> 
+    any() |> 
+    expect_false()
 
-  expect_tibble(comments_fup, max.rows = nrow(fup_143060), ncols = 24)
-  expect_true(all(note_fup[["comments_fup_text_processed_record___1"]]))
+  comments_fup |> 
+    expect_tibble(
+      max.rows = nrow(fup_143060),
+      ncols = 22
+  )
+  expect_true(all(comments_fup[["comments_fup_text_processed_record___1"]]))
+  comments_fup |> 
+    dplyr::select(dplyr::where(is.logical)) |> 
+    is.na() |> 
+    any() |> 
+    expect_false()
 
-  expect_tibble(details_fup, max.rows = nrow(fup_90), ncols = 24)
-  expect_true(all(note_fup[["details_fup_text_processed_record___1"]]))
+  details_fup |> 
+    expect_tibble(
+      max.rows = nrow(fup_90),
+      ncols = 22
+    )
+  expect_true(all(comments_fup[["details_fup_text_processed_record___1"]]))
+  details_fup |> 
+    dplyr::select(dplyr::where(is.logical)) |> 
+    is.na() |> 
+    any() |> 
+    expect_false()
 
 })

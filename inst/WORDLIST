@@ -1,3 +1,4 @@
+GPT
 JSON
 Lifecycle
 ORCID
@@ -6,7 +7,9 @@ URI
 chr
 dev
 df
+fct
 gpt
+lgl
 tbl
 tibble
 uri

@@ -20,7 +20,7 @@ test_that("query_gpt_on_redcap works", {
   note_fup |> 
     expect_tibble(
       max.rows = nrow(fup_143060),
-      ncols = 22
+      ncols = 23
     )
   expect_true(
     all(note_fup[["note_fup_text_processed_record___1"]] == 1L)
@@ -34,7 +34,7 @@ test_that("query_gpt_on_redcap works", {
   comments_fup |> 
     expect_tibble(
       max.rows = nrow(fup_143060),
-      ncols = 22
+      ncols = 23
   )
   expect_true(
     all(comments_fup[["comments_fup_text_processed_record___1"]] == 1L)
@@ -48,7 +48,7 @@ test_that("query_gpt_on_redcap works", {
   details_fup |> 
     expect_tibble(
       max.rows = nrow(fup_90),
-      ncols = 22
+      ncols = 23
     )
   expect_true(
     all(comments_fup[["details_fup_text_processed_record___1"]] == 1L)
@@ -58,5 +58,4 @@ test_that("query_gpt_on_redcap works", {
     is.na() |> 
     any() |> 
     expect_false()
-
 })

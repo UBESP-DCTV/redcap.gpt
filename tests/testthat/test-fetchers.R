@@ -32,5 +32,9 @@ test_that("fetch_form works", {
     purrr::pluck(1)
 
   # expectation
-  expect_equal(fup, fup_fup)
+  expect_equal(fup[-1], fup_fup)
+  expect_equal(
+    unique(fup[["redcap_form_name"]]),
+    "followup_postoperatorio_14_30_60_giorno_po"
+  )
 })

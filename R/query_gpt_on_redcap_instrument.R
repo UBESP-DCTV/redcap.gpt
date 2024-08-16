@@ -24,7 +24,9 @@ query_gpt_on_redcap_instrument <- function(
 
   db_to_query <- db |>
     dplyr::select(
-      dplyr::all_of(c("record_id", "redcap_form_instance")),
+      dplyr::all_of(
+        c("record_id", "redcap_form_name", "redcap_form_instance")
+      ),
       dplyr::starts_with(instrument)
     ) |>
     dplyr::filter(

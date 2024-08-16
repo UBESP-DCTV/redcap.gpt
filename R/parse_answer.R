@@ -60,5 +60,6 @@ parse_gpt_fctr <- function(from_str, to_fct) {
     )
   }
 
-  forcats::fct(res_str, .levels)
+  forcats::fct(res_str, .levels) |> 
+    forcats::fct_explicit_na("Non rilevato")
 }

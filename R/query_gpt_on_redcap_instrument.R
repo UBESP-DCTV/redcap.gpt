@@ -150,6 +150,11 @@ query_gpt_on_redcap_instrument <- function(
       !!stringr::str_glue(
         "{instrument}_text_processed_record___1"
       ) := 1L
+    ) |> 
+    dplyr::rename(
+      id_code = record_id,
+      redcap_repeat_instrument = redcap_form_name,
+      redcap_repeat_instance = redcap_form_instance
     )
 }
 

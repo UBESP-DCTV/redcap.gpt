@@ -30,6 +30,11 @@ test_that("query_gpt_on_redcap works", {
     is.na() |> 
     any() |> 
     expect_false()
+  note_fup |> 
+    purrr::map(\(x) is.factor(x) | is.logical(x)) |> 
+    any() |> 
+    expect_false()
+
 
   comments_fup |> 
     expect_tibble(
@@ -42,6 +47,10 @@ test_that("query_gpt_on_redcap works", {
   comments_fup |> 
     dplyr::select(dplyr::where(is.logical)) |> 
     is.na() |> 
+    any() |> 
+    expect_false()
+  comments_fup |> 
+    purrr::map(\(x) is.factor(x) | is.logical(x)) |> 
     any() |> 
     expect_false()
 
@@ -58,4 +67,27 @@ test_that("query_gpt_on_redcap works", {
     is.na() |> 
     any() |> 
     expect_false()
+  details_fup |> 
+    purrr::map(\(x) is.factor(x) | is.logical(x)) |> 
+    any() |> 
+    expect_false()
+
+})
+
+test_that("structural colnames are correct", {
+  # setup
+  skip_on_ci()
+  skip_on_cran()
+    
+  fup_143060 <- fetch_form("followup_postoperatorio_14_30_60_giorno_po")
+
+  # evaluation
+  note_fup <- fup_143060 |> 
+    query_gpt_on_redcap_instrument("note_fup")
+
+  # test
+  expect_subset(
+    c("redcap_repeat_instrument", "redcap_repeat_instance"),
+    names(note_fup)
+  )
 })

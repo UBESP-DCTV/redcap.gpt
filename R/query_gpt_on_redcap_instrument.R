@@ -34,8 +34,22 @@ query_gpt_on_redcap_instrument <- function(
       !.data[[
         stringr::str_c(instrument, "_text_processed_record___1")
       ]]
-    )
+    ) |> 
+      dplyr::rename(
+        redcap_repeat_instrument = redcap_form_name,
+        redcap_repeat_instance = redcap_form_instance
+      )
 
+  if (nrow(db_to_query) == 0) {
+    return(
+      db_to_query |>
+        dplyr::mutate(
+          dplyr::across(dplyr::where(is.factor), \(x) as.integer(x)),
+          dplyr::across(dplyr::where(is.logical), \(x) as.integer(x))
+        )
+    )
+  }
+  
   sys <- gpteasyr::compose_sys_prompt(
     role = compose_sys_role(),
     context = compose_sys_context()
@@ -150,11 +164,10 @@ query_gpt_on_redcap_instrument <- function(
       !!stringr::str_glue(
         "{instrument}_text_processed_record___1"
       ) := 1L
-    ) |> 
-    dplyr::rename(
-      id_code = record_id,
-      redcap_repeat_instrument = redcap_form_name,
-      redcap_repeat_instance = redcap_form_instance
+    ) |>
+    dplyr::mutate(
+      dplyr::across(dplyr::where(is.factor), \(x) as.integer(x)),
+      dplyr::across(dplyr::where(is.logical), \(x) as.integer(x))
     )
 }
 

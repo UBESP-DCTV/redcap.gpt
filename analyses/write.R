@@ -14,7 +14,7 @@ REDCapR::validate_for_write(note_fup_to_be_pushed)
 note_fup_to_be_pushed |> 
   dplyr::glimpse()
 
-note_fup_to_be_pushed |>
+note_fup_to_be_pushed  |> 
   REDCapR::redcap_write(
     ds_to_write = _,
     redcap_uri  = get_redcap_uri(),

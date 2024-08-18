@@ -31,7 +31,7 @@ test_that("query_gpt_on_redcap works", {
     any() |> 
     expect_false()
   note_fup |> 
-    purrr::map(\(x) is.factor(x) | is.logical(x)) |> 
+    purrr::map_lgl(\(x) is.factor(x) | is.logical(x)) |> 
     any() |> 
     expect_false()
 
@@ -50,7 +50,7 @@ test_that("query_gpt_on_redcap works", {
     any() |> 
     expect_false()
   comments_fup |> 
-    purrr::map(\(x) is.factor(x) | is.logical(x)) |> 
+    purrr::map_lgl(\(x) is.factor(x) | is.logical(x)) |> 
     any() |> 
     expect_false()
 
@@ -68,7 +68,7 @@ test_that("query_gpt_on_redcap works", {
     any() |> 
     expect_false()
   details_fup |> 
-    purrr::map(\(x) is.factor(x) | is.logical(x)) |> 
+    purrr::map_lgl(is.factor) |> 
     any() |> 
     expect_false()
 

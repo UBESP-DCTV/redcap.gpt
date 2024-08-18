@@ -36,8 +36,8 @@ query_gpt_on_redcap_instrument <- function(
       ]]
     ) |> 
       dplyr::rename(
-        redcap_repeat_instrument = redcap_form_name,
-        redcap_repeat_instance = redcap_form_instance
+        redcap_repeat_instrument = dplyr::all_of("redcap_form_name"),
+        redcap_repeat_instance = dplyr::all_of("redcap_form_instance")
       )
 
   if (nrow(db_to_query) == 0) {

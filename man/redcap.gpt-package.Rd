@@ -22,14 +22,10 @@ Useful links:
 \author{
 \strong{Maintainer}: Corrado Lanera \email{corrado.lanera@ubep.unipd.it} (\href{https://orcid.org/0000-0002-0520-7428}{ORCID})
 
-Authors:
-\itemize{
-  \item Cinzia Anna Maria Papappicco \email{cinziaannamaria.papappicco@ubep.unipd.it} (\href{https://orcid.org/0000-0002-9396-5025}{ORCID})
-  \item Giulia Lorenzoni \email{giulia.lorenzoni@ubep.unipd.it} (\href{https://orcid.org/0000-0003-1771-4686}{ORCID})
-}
-
 Other contributors:
 \itemize{
+  \item Cinzia Anna Maria Papappicco \email{cinziaannamaria.papappicco@ubep.unipd.it} (\href{https://orcid.org/0000-0002-9396-5025}{ORCID}) [contributor]
+  \item Giulia Lorenzoni \email{giulia.lorenzoni@ubep.unipd.it} (\href{https://orcid.org/0000-0003-1771-4686}{ORCID}) [contributor]
   \item Dario Gregori \email{drio.gregori@ubep.unipd.it} (\href{https://orcid.org/0000-0001-7906-0580}{ORCID}) [contributor]
 }
 

@@ -1,4 +1,4 @@
-# redcap.gpt (development version)
+# redcap.gpt 0.1.0
 
 * Change factors and logical behavior accordingly to REDCapR specification for writing on REDCap.
 * Add `query_gpt_on_redcap_instrument()` to extract (our) information of interest from the instrument identified.

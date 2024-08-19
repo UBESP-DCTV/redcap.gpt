@@ -1,6 +1,6 @@
 # redcap.gpt (development version)
 
-* Change factors and logical behaviour accordingly to REDCapR specification for writing on REDCap.
+* Change factors and logical behavior accordingly to REDCapR specification for writing on REDCap.
 * Add `query_gpt_on_redcap_instrument()` to extract (our) information of interest from the instrument identified.
 * Add `parse_sensazione()` and `parse_gpt_fctr()` to parse the gpt categories extracted form the answers, converting them (respectively) to logical vectors, and factors with the proper levels.
 * Add `gpt_to_tibble()` to parse gpt JSON hierarchical responses into a suitable, flat, tibble.

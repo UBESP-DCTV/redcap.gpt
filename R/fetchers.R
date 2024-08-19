@@ -19,7 +19,11 @@ fetch_form <- function(
 ) {
   checkmate::assert_string(form)
   fetch_redcap(.uri = .uri, .token = .token, forms = form) |>
-    REDCapTidieR::extract_tibble(form)
+    REDCapTidieR::extract_tibble(form) |> 
+    dplyr::mutate(
+      redcap_form_name = form,
+      .before = dplyr::everything()
+    )
 }
 
 #' Fetch REDCap DB

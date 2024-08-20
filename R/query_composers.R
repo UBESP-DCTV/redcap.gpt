@@ -19,7 +19,7 @@ compose_usr_instructions <- function() {
     - [sensazione_demotivato]: il soggetto sembra demotivato/negativo verso il recupero? - {si/no}
     - [sensazione_stanco]: il soggetto sembra stanco/esaurito fisicamente o mentalmente? - {si/no}
     - [momento]: in che momento della giornata è stato scritto il messaggio? - {mattina (05-11) / pomeriggio (11-17) / sera (17-23) / notte (23-05)}
-    - [andamento]: come pare stia procedendo il recupero? - {peggiora/migliora/costante/altalenante}
+    - [andamento]: come pare stia procedendo il recupero? - {peggiore/migliore/costante/altalenante}
     - [impatto]: che impatto sulle attività si manifesta? - {nessuno (attività regolari) / leggero (disagio nel condurre le attività) / moderato (impedimenti nel condurre le attività) / grave (limitazioni nel condurre le attività) / critico (impossibilità di condurre le attività)}  
   "
 }

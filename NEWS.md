@@ -1,3 +1,7 @@
+# redcap.gpt (development version)
+
+* Fix levels name for the trend question (fix issue #1)
+
 # redcap.gpt 0.1.0
 
 * Change factors and logical behavior accordingly to REDCapR specification for writing on REDCap.

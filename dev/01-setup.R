@@ -2,12 +2,12 @@ install.packages("pak")
 
 meta_pkg <- c("tidyverse")
 dev_pkgs <- c(
-  "devtools", "here", "janitor", "lubridate", "magick", "REDCapR",
-  "rio", "testthat", "tibble", "withr"
+  "devtools", "here", "janitor", "lubridate", "magick",
+  "rio", "testthat", "tibble", "withr", "targets", "tarchetypes"
 )
 prj_pkgs <- c(
-  "checkmate", "dplyr", "forcats", "jsonlite", "purrr", "REDCapTidieR",
-  "rlang", "stringi", "stringr", "tidyr", "usethis"
+  "checkmate", "dplyr", "forcats", "jsonlite", "purrr", "REDCapR",
+  "REDCapTidieR", "rlang", "stringi", "stringr", "tidyr", "usethis"
 )
 dev_gh_pkgs <- c("CorradoLanera/gpteasyr")
 proj_gh_pkgs <- NULL
@@ -48,3 +48,4 @@ proj_gh_pkgs |>
 renv::snapshot()
 
 usethis::use_tidy_description()
+targets::use_targets()

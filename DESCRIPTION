@@ -38,6 +38,8 @@ Suggests:
     REDCapR,
     rio,
     spelling,
+    tarchetypes,
+    targets,
     testthat (>= 3.0.0),
     tibble,
     tidyverse,

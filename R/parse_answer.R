@@ -55,7 +55,7 @@ parse_gpt_fctr <- function(from_str, to_fct) {
     })
 
   if (!all(res_str %in% c(.levels, NA_character_))) {
-    usethis::ui_warn("Not all stringrs parsed correctly.")
+    usethis::ui_warn("Not all strings parsed correctly.")
     usethis::ui_info(
       "Unique strings where {stringr::str_c(unique(res_str), collapse = ', ')}"
     )

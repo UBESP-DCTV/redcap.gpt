@@ -20,7 +20,6 @@ query_gpt_on_redcap_instrument <- function(
       names(db), stringr::str_glue("{instrument}_text")
     )) == 19
   )
-  checkmate::assert_character(db[[instrument]])
 
   db_to_query <- db |>
     dplyr::select(

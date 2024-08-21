@@ -11,14 +11,14 @@ compose_usr_task <- function() {
 }
 
 compose_usr_instructions <- function() {
-  "Dalla testo fornito dal soggetto, riportato qui di seguito tra la coppia di delimitatori `#####`, estrai le seguenti informazioni:
+  "Dal testo fornito dal soggetto, riportato qui di seguito tra la coppia di delimitatori `#####`, estrai le seguenti informazioni:
     - [sensazione_calmo]: il soggetto sembra calmo/tranquillo/sereno? - {si/no}
     - [sensazione_irritato]: il soggetto sembra irritato/infastidito? - {si/no}
     - [sensazione_ansioso]: il soggetto sembra ansioso/preoccupato/nervoso? - {si/no}
     - [sensazione_ottimista]: il soggetto sembra ottimista/positivo verso il recupero? - {si/no}
     - [sensazione_demotivato]: il soggetto sembra demotivato/negativo verso il recupero? - {si/no}
     - [sensazione_stanco]: il soggetto sembra stanco/esaurito fisicamente o mentalmente? - {si/no}
-    - [momento]: in che momento della giornata è stato scritto il messaggio? - {mattina (05-11) / pomeriggio (11-17) / sera (17-23) / notte (23-05)}
+    - [momento]: in quali momenti della giornata sono collocate le sesazioni descritte? - {mattina (05-11) / pomeriggio (11-17) / sera (17-23) / notte (23-05)}
     - [andamento]: come pare stia procedendo il recupero? - {peggiore/migliore/costante/altalenante}
     - [impatto]: che impatto sulle attività si manifesta? - {nessuno (attività regolari) / leggero (disagio nel condurre le attività) / moderato (impedimenti nel condurre le attività) / grave (limitazioni nel condurre le attività) / critico (impossibilità di condurre le attività)}  
   "

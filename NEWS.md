@@ -1,4 +1,4 @@
-# redcap.gpt (development version)
+# redcap.gpt 0.1.1
 
 * Added support of `targets` and `tarchetypes`
 * Fix levels name for the trend question (fix issue #1)

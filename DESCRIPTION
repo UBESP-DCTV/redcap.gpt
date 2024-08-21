@@ -1,10 +1,10 @@
 Package: redcap.gpt
 Title: What the Package Does (One Line, Title Case)
-Version: 0.1.0.9000
+Version: 0.1.1
 Authors@R: c(
     person("Corrado", "Lanera", , "corrado.lanera@ubep.unipd.it", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-0520-7428")),
-    person(c("Cinzia", "Anna", "Maria"), "Papappicco", , "cinziaannamaria.papappicco@ubep.unipd.it", role = "ctb",
+    person(c("Cinzia", "Anna", "Maria"), "Papappicco", , "cinziaannamaria.papappicco@ubep.unipd.it", role = "aut",
            comment = c(ORCID = "0000-0002-9396-5025")),
     person("Giulia", "Lorenzoni", , "giulia.lorenzoni@ubep.unipd.it", role = "ctb",
            comment = c(ORCID = "0000-0003-1771-4686")),

@@ -26,4 +26,6 @@ if (
   .attach("devtools")
   .attach("testthat")
   .attach("checkmate")
+  .attach("targets")
+  .attach("tarchetypes")
 }

@@ -1,4 +1,4 @@
-# redcap.gpt (development version)
+# redcap.gpt 0.3.1
 
 * Add `add_check_to_varnames` and `share_objects()` to create and export version ready "to check" for the results.
 

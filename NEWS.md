@@ -1,4 +1,4 @@
-# redcap.gpt (development version)
+# redcap.gpt 0.2.0
 
 * allow `query_gpt_on_redcap_instrument` to process the whole db setting `query_all_records` to `TRUE`.
 * change `parse_sensazione` to a more general `parse_checkbox`.

@@ -1,4 +1,4 @@
-#' Parser for  `answer` columns
+#' Parser for checkboxes
 #'
 #' Converts GPT answers yes/no to logical.
 #'
@@ -8,11 +8,11 @@
 #' @export
 #'
 #' @examples
-#' parse_sensazione("si")
-#' parse_sensazione("no")
-#' parse_sensazione("NA")
-#' parse_sensazione("N/A")
-parse_sensazione <- function(x) {
+#' parse_checkbox("si")
+#' parse_checkbox("no")
+#' parse_checkbox("NA")
+#' parse_checkbox("N/A")
+parse_checkbox <- function(x) {
   res <- stringi::stri_enc_toascii(stringr::str_to_lower(x)) == "si"
   tidyr::replace_na(res, FALSE) |> 
     as.integer()

@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">redcap.gpt</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,7 +42,8 @@
 <span>  <span class="va">db</span>,</span>
 <span>  instrument <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"note_fup"</span>, <span class="st">"comments_fup"</span>, <span class="st">"details_fup"</span><span class="op">)</span>,</span>
 <span>  model <span class="op">=</span> <span class="st">"gpt-4o-mini"</span>,</span>
-<span>  seed <span class="op">=</span> <span class="fl">1234</span></span>
+<span>  seed <span class="op">=</span> <span class="fl">1234</span>,</span>
+<span>  query_on_all_records <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -64,6 +65,14 @@
 
 <dt id="arg-seed">seed<a class="anchor" aria-label="anchor" href="#arg-seed"></a></dt>
 <dd><p>(int, default: 1234) The seed for the GPT model.</p></dd>
+
+
+<dt id="arg-query-on-all-records">query_on_all_records<a class="anchor" aria-label="anchor" href="#arg-query-on-all-records"></a></dt>
+<dd><p>(lgl, default: FALSE) If TRUE, the
+content of the "text_processed_record" variable (which mark if a
+record has already been processed) will be ignored. If FALSE
+(default) only records not marked as already processed will be
+considered.</p></dd>
 
 </dl></div>
     <div class="section level2">

@@ -859,7 +859,7 @@
     },
     "httr2": {
       "Package": "httr2",
-      "Version": "1.0.2",
+      "Version": "1.0.3",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -876,7 +876,7 @@
         "vctrs",
         "withr"
       ],
-      "Hash": "320c8fe23fcb25a6690ef7bdb6a3a705"
+      "Hash": "10d93e97faad6b629301bb3a2fd23378"
     },
     "hunspell": {
       "Package": "hunspell",

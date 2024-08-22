@@ -1,6 +1,6 @@
 Package: redcap.gpt
 Title: What the Package Does (One Line, Title Case)
-Version: 0.3.0
+Version: 0.3.0.9000
 Authors@R: c(
     person("Corrado", "Lanera", , "corrado.lanera@ubep.unipd.it", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-0520-7428")),
@@ -21,9 +21,11 @@ Imports:
     dplyr,
     forcats,
     jsonlite,
+    lubridate,
     purrr,
     REDCapR,
     REDCapTidieR,
+    rio,
     rlang,
     stringi,
     stringr,
@@ -34,10 +36,8 @@ Suggests:
     gpteasyr (>= 0.5.0),
     here,
     janitor,
-    lubridate,
     magick,
     quarto,
-    rio,
     spelling,
     tarchetypes,
     targets,

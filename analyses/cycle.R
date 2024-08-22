@@ -4,6 +4,7 @@ library(redcap.gpt)
 library(REDCapR)
 library(usethis)
 
+ui_info("START: {(tic <- lubridate::now())}")
 ui_todo("Fetching REDCap data...")
 fup_143060 <- fetch_form("followup_postoperatorio_14_30_60_giorno_po")
 ui_done("form 14/30/60 fup fetched")
@@ -114,3 +115,4 @@ if (!go_details_fup) {
 }
 
 ui_done("{completed} instruments out of three were updated on REDCap DB.")
+ui_info("END: {(toc <- lubridate::now())}")

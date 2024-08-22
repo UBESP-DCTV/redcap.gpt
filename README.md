@@ -149,13 +149,38 @@ Save and exit.
 > Make sure to replace `/path/to/your/cycle.R` with the actual path to
 > your `cycle.R` script., and `/path/to/redcap.gpt.log` with the actual
 > path of your (possibly newly created) `redcap.gpt.log` log file
-> (e.g. `~/redcap.gpt.log`).
+> (e.g. `~/redcap.gpt.log`). Pay attention that crontab cannot expand
+> `~`, so write full absolute paths to the interested files.
 
 To check the cron job has been added and it is active now:
 
 ``` bash
 $ crontab -l
 ```
+
+The log file created will contain, e.g. if there are no new records to
+process, the following informations
+
+    ℹ START: 2024-08-23 00:24:02.527286
+    • Fetching REDCap data...
+    ✔ form 14/30/60 fup fetched
+    ✔ form 90 fup fetched
+    ✔ Fetching completed.
+    • Querying GPT...
+    ℹ 0 records to process for note_fup on form 14/30/60 fup.
+    ✔ note_fup on form 14/30/60 fup queried and processed.
+    ℹ 0 records to process for comments_fup on form 14/30/60 fup.
+    ✔ comments_fup on form 14/30/60 fup queried and processed.
+    ℹ 0 records to process for details_fup on form 90 fup.
+    ✔ details_fup on form 90 fup queried and processed.
+    ℹ 0 records to process overall.
+    ✔ Queries completed.
+    • Updating REDCap DB...
+    ℹ No more records to process for note_fup on 14/30/60 fup.
+    ℹ No more records to process for comments_fup on 14/30/60 fup.
+    ℹ No more records to process for details_fup on 90 fup.
+    ✔ 0 instruments out of three were updated on REDCap DB.
+    ℹ END: 2024-08-23 00:24:05.574185
 
 ## Code of Conduct
 

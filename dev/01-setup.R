@@ -2,8 +2,8 @@ install.packages("pak")
 
 meta_pkg <- c("tidyverse")
 dev_pkgs <- c(
-  "devtools", "here", "janitor", "lubridate", "magick",
-  "rio", "testthat", "tibble", "withr", "targets", "tarchetypes"
+  "devtools", "here", "janitor", "lubridate", "magick", "quarto",
+  "rio", "testthat", "tibble", "targets", "tarchetypes", "withr"
 )
 prj_pkgs <- c(
   "checkmate", "dplyr", "forcats", "jsonlite", "purrr", "REDCapR",

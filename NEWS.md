@@ -1,4 +1,4 @@
-# redcap.gpt (development version)
+# redcap.gpt 0.3.0
 
 * Update README with setu and execution instructions.
 * add `analyses/cycle.R` to execute the processing cycle (fetching, processing, writing).

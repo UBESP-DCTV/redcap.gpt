@@ -154,6 +154,27 @@
 </blockquote>
 <p>To check the cron job has been added and it is active now:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">$</span> crontab <span class="at">-l</span></span></code></pre></div>
+<p>The log file created will contain, e.g. if there are no new records to process, the following informations</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>ℹ START<span class="sc">:</span> <span class="dv">2024-08-23</span> <span class="dv">00</span><span class="sc">:</span><span class="dv">24</span><span class="sc">:</span><span class="fl">02.527286</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>• Fetching REDCap data...</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>✔ form <span class="dv">14</span><span class="sc">/</span><span class="dv">30</span><span class="sc">/</span><span class="dv">60</span> fup fetched</span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>✔ form <span class="dv">90</span> fup fetched</span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>✔ Fetching completed.</span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>• Querying GPT...</span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>ℹ <span class="dv">0</span> records to process <span class="cf">for</span> note_fup on form <span class="dv">14</span><span class="sc">/</span><span class="dv">30</span><span class="sc">/</span><span class="dv">60</span> fup.</span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>✔ note_fup on form <span class="dv">14</span><span class="sc">/</span><span class="dv">30</span><span class="sc">/</span><span class="dv">60</span> fup queried and processed.</span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a>ℹ <span class="dv">0</span> records to process <span class="cf">for</span> comments_fup on form <span class="dv">14</span><span class="sc">/</span><span class="dv">30</span><span class="sc">/</span><span class="dv">60</span> fup.</span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a>✔ comments_fup on form <span class="dv">14</span><span class="sc">/</span><span class="dv">30</span><span class="sc">/</span><span class="dv">60</span> fup queried and processed.</span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a>ℹ <span class="dv">0</span> records to process <span class="cf">for</span> details_fup on form <span class="dv">90</span> fup.</span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a>✔ details_fup on form <span class="dv">90</span> fup queried and processed.</span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a>ℹ <span class="dv">0</span> records to process overall.</span>
+<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a>✔ Queries completed.</span>
+<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a>• Updating REDCap DB...</span>
+<span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a>ℹ No more records to process <span class="cf">for</span> note_fup on <span class="dv">14</span><span class="sc">/</span><span class="dv">30</span><span class="sc">/</span><span class="dv">60</span> fup.</span>
+<span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a>ℹ No more records to process <span class="cf">for</span> comments_fup on <span class="dv">14</span><span class="sc">/</span><span class="dv">30</span><span class="sc">/</span><span class="dv">60</span> fup.</span>
+<span id="cb9-18"><a href="#cb9-18" tabindex="-1"></a>ℹ No more records to process <span class="cf">for</span> details_fup on <span class="dv">90</span> fup.</span>
+<span id="cb9-19"><a href="#cb9-19" tabindex="-1"></a>✔ <span class="dv">0</span> instruments out of three were updated on REDCap DB.</span>
+<span id="cb9-20"><a href="#cb9-20" tabindex="-1"></a>ℹ END<span class="sc">:</span> <span class="dv">2024-08-23</span> <span class="dv">00</span><span class="sc">:</span><span class="dv">24</span><span class="sc">:</span><span class="fl">05.574185</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">

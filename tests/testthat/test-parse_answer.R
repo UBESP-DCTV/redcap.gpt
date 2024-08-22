@@ -1,6 +1,6 @@
-test_that("parse_sensazione works", {
+test_that("parse_checkbox works", {
   # evaluate
-  res <- parse_sensazione(c("si", "no", "forse", NA))
+  res <- parse_checkbox(c("si", "no", "forse", NA))
 
   # test
   expect_equal(res, c(1, 0, 0, 0))

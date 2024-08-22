@@ -4,6 +4,11 @@
 #' @param instrument (chr) The REDCap instrument of the form to query.
 #' @param model (chr, default: "gpt-4o-mini") The GPT model to use.
 #' @param seed (int, default: 1234) The seed for the GPT model.
+#' @param query_on_all_records (lgl, default: FALSE) If TRUE, the 
+#'   content of the "text_processed_record" variable (which mark if a 
+#'   record has already been processed) will be ignored. If FALSE 
+#'   (default) only records not marked as already processed will be 
+#'   considered.
 #'
 #' @return (tbl_df) The REDCap DB with GPT responses parsed.
 #' @export
@@ -11,14 +16,15 @@ query_gpt_on_redcap_instrument <- function(
   db,
   instrument = c("note_fup", "comments_fup", "details_fup"),
   model = "gpt-4o-mini",
-  seed = 1234
+  seed = 1234,
+  query_on_all_records = FALSE
 ) {
   instrument <- match.arg(instrument)
   checkmate::assert_subset(instrument, names(db))
   stopifnot(
     sum(stringr::str_detect(
       names(db), stringr::str_glue("{instrument}_text")
-    )) == 19
+    )) == 25
   )
 
   db_to_query <- db |>
@@ -30,7 +36,7 @@ query_gpt_on_redcap_instrument <- function(
     ) |>
     dplyr::filter(
       !is.na(.data[[instrument]]),
-      !.data[[
+      query_on_all_records | !.data[[
         stringr::str_c(instrument, "_text_processed_record___1")
       ]]
     ) |> 
@@ -89,8 +95,15 @@ query_gpt_on_redcap_instrument <- function(
   stanco_response <- stringr::str_glue("{instrument}_text_feeling___6")
   stanco_motivation <- stringr::str_glue("{instrument}_text_feeling_6_motivation")
   
-  momento_response <- stringr::str_glue("{instrument}_text_daytime")
-  momento_motivation <- stringr::str_glue("{instrument}_text_daytime_motivation")
+  mattina_response <- stringr::str_glue("{instrument}_text_daytime___1")
+  mattina_motivation <- stringr::str_glue("{instrument}_text_daytime_1_motivation")
+  pomeriggio_response <- stringr::str_glue("{instrument}_text_daytime___2")
+  pomeriggio_motivation <- stringr::str_glue("{instrument}_text_daytime_2_motivation")
+  sera_response <- stringr::str_glue("{instrument}_text_daytime___3")
+  sera_motivation <- stringr::str_glue("{instrument}_text_daytime_3_motivation")
+  notte_response <- stringr::str_glue("{instrument}_text_daytime___4")
+  notte_motivation <- stringr::str_glue("{instrument}_text_daytime_4_motivation")
+
   andamento_response <- stringr::str_glue("{instrument}_text_trend")
   andamento_motivation <- stringr::str_glue("{instrument}_text_trend_motivation")
   impatto_response <- stringr::str_glue("{instrument}_text_impact")
@@ -104,11 +117,11 @@ query_gpt_on_redcap_instrument <- function(
       ),
       dplyr::across(
         dplyr::matches("^sensazione_.*_risposta"),
-         parse_sensazione
+        parse_checkbox
       ),
-      momento_risposta = parse_gpt_fctr(
-        from_str = .data[["momento_risposta"]],
-        to_fct = .data[[momento_response]]
+      dplyr::across(
+        dplyr::matches("^momento_.*_risposta"),
+        parse_checkbox
       ),
       andamento_risposta = parse_gpt_fctr(
         from_str = .data[["andamento_risposta"]],
@@ -132,8 +145,16 @@ query_gpt_on_redcap_instrument <- function(
       !!demotivato_motivation := .data[["sensazione_demotivato_motivazione"]],
       !!stanco_response := .data[["sensazione_stanco_risposta"]],
       !!stanco_motivation := .data[["sensazione_stanco_motivazione"]],
-      !!momento_response := .data[["momento_risposta"]],
-      !!momento_motivation := .data[["momento_motivazione"]],
+
+      !!mattina_response := .data[["momento_mattina_risposta"]],
+      !!mattina_motivation := .data[["momento_mattina_motivazione"]],
+      !!pomeriggio_response := .data[["momento_pomeriggio_risposta"]],
+      !!pomeriggio_motivation := .data[["momento_pomeriggio_motivazione"]],
+      !!sera_response := .data[["momento_sera_risposta"]],
+      !!sera_motivation := .data[["momento_sera_motivazione"]],
+      !!notte_response := .data[["momento_notte_risposta"]],
+      !!notte_motivation := .data[["momento_notte_motivazione"]],
+      
       !!andamento_response := .data[["andamento_risposta"]],
       !!andamento_motivation := .data[["andamento_motivazione"]],
       !!impatto_response := .data[["impatto_risposta"]],
@@ -152,8 +173,14 @@ query_gpt_on_redcap_instrument <- function(
       "sensazione_demotivato_motivazione",
       "sensazione_stanco_risposta",
       "sensazione_stanco_motivazione",
-      "momento_risposta",
-      "momento_motivazione",
+      "momento_mattina_risposta",
+      "momento_mattina_motivazione",
+      "momento_pomeriggio_risposta",
+      "momento_pomeriggio_motivazione",
+      "momento_sera_risposta",
+      "momento_sera_motivazione",
+      "momento_notte_risposta",
+      "momento_notte_motivazione",
       "andamento_risposta",
       "andamento_motivazione",
       "impatto_risposta",
@@ -168,31 +195,4 @@ query_gpt_on_redcap_instrument <- function(
       dplyr::across(dplyr::where(is.factor), \(x) as.integer(x)),
       dplyr::across(dplyr::where(is.logical), \(x) as.integer(x))
     )
-}
-
-
-var_to_map <- function(x) {
-  c(
-    feeling___1 = "calmo",
-    feeling___2 = "irritato",
-    feeling___3 = "ansioso",
-    feeling___4 = "ottimista",
-    feeling___5 = "demotivato",
-    daytime = "momento",
-    trend = "andamento",
-    impact = "impatto"
-  )[x]
-}
-
-map_to_var <- function(x) {
-  c(
-    calmo = "feeling___1",
-    irritato = "feeling___2",
-    ansioso = "feeling___3",
-    ottimista = "feeling___4",
-    demotivato = "feeling___5",
-    momento = "daytime",
-    andamento = "trend",
-    impatto = "impact"
-  )[x]
 }

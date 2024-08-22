@@ -12,13 +12,16 @@ compose_usr_task <- function() {
 
 compose_usr_instructions <- function() {
   "Dal testo fornito dal soggetto, riportato qui di seguito tra la coppia di delimitatori `#####`, estrai le seguenti informazioni:
-    - [sensazione_calmo]: il soggetto sembra calmo/tranquillo/sereno? - {si/no}
-    - [sensazione_irritato]: il soggetto sembra irritato/infastidito? - {si/no}
-    - [sensazione_ansioso]: il soggetto sembra ansioso/preoccupato/nervoso? - {si/no}
-    - [sensazione_ottimista]: il soggetto sembra ottimista/positivo verso il recupero? - {si/no}
-    - [sensazione_demotivato]: il soggetto sembra demotivato/negativo verso il recupero? - {si/no}
-    - [sensazione_stanco]: il soggetto sembra stanco/esaurito fisicamente o mentalmente? - {si/no}
-    - [momento]: in quali momenti della giornata sono collocate le sesazioni descritte? - {mattina (05-11) / pomeriggio (11-17) / sera (17-23) / notte (23-05)}
+    - [sensazione_calmo]: basandosi sul tono/stile e su quanto esplicitamente scritto, il soggetto sembra calmo/tranquillo/sereno? - {si/no}
+    - [sensazione_irritato]: basandosi sul tono/stile e su quanto esplicitamente scritto, il soggetto sembra irritato/infastidito? - {si/no}
+    - [sensazione_ansioso]: basandosi sul tono/stile e su quanto esplicitamente scritto, il soggetto sembra ansioso/preoccupato/nervoso? - {si/no}
+    - [sensazione_ottimista]: basandosi sul tono/stile e su quanto esplicitamente scritto, il soggetto sembra ottimista/positivo verso il recupero? - {si/no}
+    - [sensazione_demotivato]: basandosi sul tono/stile e su quanto esplicitamente scritto, il soggetto sembra demotivato/negativo verso il recupero? - {si/no}
+    - [sensazione_stanco]: basandosi sul tono/stile e su quanto esplicitamente scritto, il soggetto sembra stanco/esaurito fisicamente o mentalmente? - {si/no}
+    - [momento_mattina]: ci sono sensazioni che nella descrizione sono state collocate (esplicitamente) al mattino? - {si/no}
+    - [momento_pomeriggio]: ci sono sensazioni che nella descrizione sono state collocate (esplicitamente) al pomeriggio? - {si/no}
+    - [momento_sera]: ci sono sensazioni che nella descrizione sono state collocate (esplicitamente) alla sera? - {si/no}
+    - [momento_notte]: ci sono sensazioni che nella descrizione sono state collocate (esplicitamente) nella notte? - {si/no}
     - [andamento]: come pare stia procedendo il recupero? - {peggiore/migliore/costante/altalenante}
     - [impatto]: che impatto sulle attività si manifesta? - {nessuno (attività regolari) / leggero (disagio nel condurre le attività) / moderato (impedimenti nel condurre le attività) / grave (limitazioni nel condurre le attività) / critico (impossibilità di condurre le attività)}  
   "
@@ -60,7 +63,19 @@ compose_usr_example <- function() {
         "risposta": <rispsota>,
         "motivazione": <motivazione per la risposta data>
       },
-      momento = {
+      momento_mattina = {
+        "risposta": <rispsota>,
+        "motivazione": <motivazione per la risposta data>
+      },
+      momento_pomeriggio = {
+        "risposta": <rispsota>,
+        "motivazione": <motivazione per la risposta data>
+      },
+      momento_sera = {
+        "risposta": <rispsota>,
+        "motivazione": <motivazione per la risposta data>
+      },
+      momento_notte = {
         "risposta": <rispsota>,
         "motivazione": <motivazione per la risposta data>
       },

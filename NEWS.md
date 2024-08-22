@@ -1,7 +1,12 @@
+# redcap.gpt (development version)
+
+* allow `query_gpt_on_redcap_instrument` to process the whole db setting `query_all_records` to `TRUE`.
+* change `parse_sensazione` to a more general `parse_checkbox`.
+
 # redcap.gpt 0.1.1
 
-* Added support of `targets` and `tarchetypes`
-* Fix levels name for the trend question (fix issue #1)
+* Added support of `targets` and `tarchetypes`.
+* Fix levels name for the trend question (fix issue #1).
 
 # redcap.gpt 0.1.0
 

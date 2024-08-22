@@ -8,7 +8,8 @@ query_gpt_on_redcap_instrument(
   db,
   instrument = c("note_fup", "comments_fup", "details_fup"),
   model = "gpt-4o-mini",
-  seed = 1234
+  seed = 1234,
+  query_on_all_records = FALSE
 )
 }
 \arguments{
@@ -19,6 +20,12 @@ query_gpt_on_redcap_instrument(
 \item{model}{(chr, default: "gpt-4o-mini") The GPT model to use.}
 
 \item{seed}{(int, default: 1234) The seed for the GPT model.}
+
+\item{query_on_all_records}{(lgl, default: FALSE) If TRUE, the
+content of the "text_processed_record" variable (which mark if a
+record has already been processed) will be ignored. If FALSE
+(default) only records not marked as already processed will be
+considered.}
 }
 \value{
 (tbl_df) The REDCap DB with GPT responses parsed.

@@ -1,7 +1,7 @@
 # redcap.gpt (development version)
 
+* Update README with setu and execution instructions.
 * add `analyses/cycle.R` to execute the processing cycle (fetching, processing, writing).
-* add support to `littler` for scripting and command-line front-end
 
 # redcap.gpt 0.2.0
 

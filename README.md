@@ -17,6 +17,12 @@ The project is deveolped encapsulated with `renv`, so that if you clone
 it to develop it your environment of packages will be automatically set
 correctly.
 
+At first start, follow the instruction, and next:
+
+``` r
+renv::restore()
+```
+
 Main folder and file you can find are:
 
 - `analyses/`: here you can find the prototype scripts for the analyses,
@@ -91,24 +97,28 @@ to spin up the `targets` pipeline managing all the stages automatically.
 
 ### Automatically (manually triggered from bash)
 
-First install teh package on a linux system (this works on linux only)
+First install the package.
+
+> NOTE:
+>
+> This assume:
+>
+> - you have not cloned the project or, anyway, you are not in an R
+>   session inside the project folder.
+> - You have setup all the environmental variables on your user
+>   `.Renviron` (you can open it in edit mode by running in R
+>   `usethis::edit_r_environ()`).
 
 ``` r
 # install.packages("pak")
 pak::pkg_install("UBESP-DCTV/redcap.gpt")
 ```
 
-Next copy the `analyses/cycle.R` script everywhere in your file system,
-and make it executable
+Next copy the `analyses/cycle.R` script (from the repo) to your
+preferred location in your file system, and run it by `Rscript`
 
 ``` bash
-$ chmod +x cycle.R
-```
-
-and simply run it
-
-``` bash
-$ ./cycle.R
+$ Rscript "cycle.R"
 ```
 
 ### Automatically (and automatically triggered form bash)
@@ -123,19 +133,23 @@ $ crontab -e
 and add the directive
 
 ``` bash
-59 23 * * * /path/to/your/cycle.sh
+59 23 * * * Rscript "/path/to/cycle.R" >> /path/to/redcap.gpt.log 2>&1
 ```
 
 Save and exit.
 
-> NOTE: Here’s what each part means:
+> NOTE:
+>
+> Here’s what each part means:
 >
 >     59: The minute when the script will run (59th minute).
 >     23: The hour when the script will run (23rd hour, i.e., 11 PM).
 >     * * *: These asterisks represent the day of the month, month, and day of the week, respectively. The * means "any value," so this script will run every day.
 >
-> Make sure to replace /path/to/your/cycle.sh with the actual path to
-> your cycle.sh script.
+> Make sure to replace `/path/to/your/cycle.R` with the actual path to
+> your `cycle.R` script., and `/path/to/redcap.gpt.log` with the actual
+> path of your (possibly newly created) `redcap.gpt.log` log file
+> (e.g. `~/redcap.gpt.log`).
 
 To check the cron job has been added and it is active now:
 

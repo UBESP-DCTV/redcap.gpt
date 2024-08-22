@@ -1,7 +1,11 @@
 # redcap.gpt (development version)
 
+* add `analyses/cycle.R` to execute the processing cycle (fetching, processing, writing).
+* add support to `littler` for scripting and command-line front-end
+
 # redcap.gpt 0.2.0
 
+* update prompts.
 * allow `query_gpt_on_redcap_instrument` to process the whole db setting `query_all_records` to `TRUE`.
 * change `parse_sensazione` to a more general `parse_checkbox`.
 

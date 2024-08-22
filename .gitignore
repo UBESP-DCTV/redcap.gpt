@@ -6,3 +6,4 @@ docs
 .Renviron
 dev/redcap-credentials.csv
 output
+README.html

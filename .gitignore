@@ -7,3 +7,5 @@ docs
 dev/redcap-credentials.csv
 output
 README.html
+
+/.quarto/

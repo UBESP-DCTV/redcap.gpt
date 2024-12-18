@@ -38,13 +38,13 @@ usethis::use_pkgdown_github_pages()
 usethis::use_tidy_eval()
 
 dev_pkgs |> purrr::walk(\(x) usethis::use_package(x, type = "Suggests"))
-prj_pkgs |> purrr::walk(use_package)
+prj_pkgs |> purrr::walk(usethis::use_package)
 
-dev_gh_pkgs |> 
-  stringr::str_remove_all("^[^/]+/") |> 
+dev_gh_pkgs |>
+  stringr::str_remove_all("^[^/]+/") |>
   purrr::walk(\(x) use_dev_package(x, type = "Suggests"))
-proj_gh_pkgs |> 
-  stringr::str_remove_all("^[^/]+/") |> 
+proj_gh_pkgs |>
+  stringr::str_remove_all("^[^/]+/") |>
   purrr::walk(use_dev_package)
 renv::snapshot()
 

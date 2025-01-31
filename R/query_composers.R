@@ -3,11 +3,11 @@ compose_sys_role <- function() {
 }
 
 compose_sys_context <- function() {
-  "Le risposte provengono dallo studio COPPER, che esamina l'impatto della crioanalgesia sulla gestione del dolore e sul recupero nei pazienti di età superiore ai 12 anni sottoposti a riparazione del pectus excavatum."
+  "Le risposte a testo libero provengono dallo studio COPPER, uno studio clinico randomizzato che valuta se la crio-analgesia migliori i risultati nella gestione del dolore post-operatorio e nel recupero delle normali attività entro due settimane dall'intervento chirurgico, in adolescenti di età superiore ai 12 anni sottoposti a riparazione del pectus excavatum."
 }
 
 compose_usr_task <- function() {
-  "Il tup compito è quello di estrarre/inferire informazioni strutturate dalle risposte che ti vengono fornite."
+  "Il tuo compito è quello di estrarre/inferire informazioni strutturate dalle risposte che ti vengono fornite."
 }
 
 compose_usr_instructions <- function() {
@@ -22,8 +22,8 @@ compose_usr_instructions <- function() {
     - [momento_pomeriggio]: ci sono sensazioni che nella descrizione sono state collocate (esplicitamente) al pomeriggio? - {si/no}
     - [momento_sera]: ci sono sensazioni che nella descrizione sono state collocate (esplicitamente) alla sera? - {si/no}
     - [momento_notte]: ci sono sensazioni che nella descrizione sono state collocate (esplicitamente) nella notte? - {si/no}
-    - [andamento]: come pare stia procedendo il recupero? - {peggiore/migliore/costante/altalenante}
-    - [impatto]: che impatto sulle attività si manifesta? - {nessuno (attività regolari) / leggero (disagio nel condurre le attività) / moderato (impedimenti nel condurre le attività) / grave (limitazioni nel condurre le attività) / critico (impossibilità di condurre le attività)}  
+    - [andamento]: come pare stia procedendo il recupero? - {peggiore/migliore/costante/altalenante/non rilevato}
+    - [impatto]: che impatto sulle attività si manifesta? - {nessuno (attività regolari) / leggero (disagio nel condurre le attività) / moderato (impedimenti nel condurre le attività) / grave (limitazioni nel condurre le attività) / critico (impossibilità di condurre le attività) / non rilevato}
   "
 }
 
@@ -40,56 +40,56 @@ compose_usr_example <- function() {
     ```json
     {
       sensazione_calmo = {
-        "risposta": <rispsota>,
+        "risposta": <risposta>,
         "motivazione": <motivazione per la risposta data>
       },
       sensazione_irritato = {
-        "risposta": <rispsota>,
+        "risposta": <risposta>,
         "motivazione": <motivazione per la risposta data>
       },
       sensazione_ansioso = {
-        "risposta": <rispsota>,
+        "risposta": <risposta>,
         "motivazione": <motivazione per la risposta data>
       },
       sensazione_ottimista = {
-        "risposta": <rispsota>,
+        "risposta": <risposta>,
         "motivazione": <motivazione per la risposta data>
       },
       sensazione_demotivato = {
-        "risposta": <rispsota>,
+        "risposta": <risposta>,
         "motivazione": <motivazione per la risposta data>
       },
       sensazione_stanco = {
-        "risposta": <rispsota>,
+        "risposta": <risposta>,
         "motivazione": <motivazione per la risposta data>
       },
       momento_mattina = {
-        "risposta": <rispsota>,
+        "risposta": <risposta>,
         "motivazione": <motivazione per la risposta data>
       },
       momento_pomeriggio = {
-        "risposta": <rispsota>,
+        "risposta": <risposta>,
         "motivazione": <motivazione per la risposta data>
       },
       momento_sera = {
-        "risposta": <rispsota>,
+        "risposta": <risposta>,
         "motivazione": <motivazione per la risposta data>
       },
       momento_notte = {
-        "risposta": <rispsota>,
+        "risposta": <risposta>,
         "motivazione": <motivazione per la risposta data>
       },
       andamento = {
-        "risposta": <rispsota>,
+        "risposta": <risposta>,
         "motivazione": <motivazione per la risposta data>
       },
       impatto = {
-        "risposta": <rispsota>,
+        "risposta": <risposta>,
         "motivazione": <motivazione per la risposta data>
       }
     }
-    ```  
-  
+    ```
+
   '
 }
 

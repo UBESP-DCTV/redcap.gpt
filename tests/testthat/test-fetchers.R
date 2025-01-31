@@ -38,3 +38,16 @@ test_that("fetch_form works", {
     "followup_postoperatorio_14_30_60_giorno_po"
   )
 })
+
+test_that("error on wrong pid", {
+  # setup
+  skip_on_ci()
+  skip_on_cran()
+  withr::local_envvar(REDCAP_PID = get_redcap_pid() + 1)
+
+  # evaluation
+  expect_error(
+    fetch_form("followup_postoperatorio_14_30_60_giorno_po"),
+    "Must be a permutation of set"
+  )
+})

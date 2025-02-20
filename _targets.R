@@ -10,8 +10,6 @@ tar_option_set(
   error = "continue",
   workspace_on_error = TRUE,
   # parallel processing
-  storage = "worker",
-  retrieval = "worker",
   controller = crew::crew_controller_local(
     workers = 3,
     seconds_idle = 60
@@ -39,7 +37,7 @@ list(
   ),
   tar_target(
     name = note_fup_to_be_pushed,
-    command = fup_143060 |> 
+    command = fup_143060 |>
       query_gpt_on_redcap_instrument(
         "note_fup",
         query_on_all_records = params[["query_on_all_records"]]
@@ -47,7 +45,7 @@ list(
   ),
   tar_target(
     name = comments_fup_to_be_pushed,
-    command = fup_143060 |> 
+    command = fup_143060 |>
       query_gpt_on_redcap_instrument(
         "comments_fup",
         query_on_all_records = params[["query_on_all_records"]]
@@ -55,7 +53,7 @@ list(
   ),
   tar_target(
     name = details_fup_to_be_pushed,
-    command = fup_90 |> 
+    command = fup_90 |>
       query_gpt_on_redcap_instrument(
         "details_fup",
         query_on_all_records = params[["query_on_all_records"]]
@@ -63,7 +61,7 @@ list(
   ),
   tar_skip(
     name = write_note_fup,
-    command = note_fup_to_be_pushed  |> 
+    command = note_fup_to_be_pushed  |>
       redcap_write(
         ds_to_write = _,
         redcap_uri  = get_redcap_uri(),
@@ -75,7 +73,7 @@ list(
   ),
   tar_skip(
     name = write_comments_fup,
-    command = comments_fup_to_be_pushed  |> 
+    command = comments_fup_to_be_pushed  |>
       redcap_write(
         ds_to_write = _,
         redcap_uri  = get_redcap_uri(),
@@ -87,7 +85,7 @@ list(
   ),
   tar_skip(
     name = write_details_fup,
-    command = details_fup_to_be_pushed  |> 
+    command = details_fup_to_be_pushed  |>
       redcap_write(
         ds_to_write = _,
         redcap_uri  = get_redcap_uri(),

@@ -1,30 +1,33 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
+fup_143060|stem|18c4cd0d0995dc9d|b4952666133d59f7|42759907e290da55|-1700786069||t20119.4813403665s|s11294b|11294|qs|local|vector|||2.25||
+fup_90|stem|dadf0b84de5cbb21|5ca3b7280b293946|42759907e290da55|-50646424||t20119.4813403665s|s4335b|4335|qs|local|vector|||1.875||
+dbToCheck|stem|50a354435ee9d5af|55bda7b67f4fa5d7|39100b6df80b4fe4|2079670674||t20119.484147761s|s17175b|17175|qs|local|vector|||0.031||
+shareDbToCheck|stem|9aa6c72bcd4dc7ff|f0002d7b7024d7c5|a46db60f80e186d2|1580112161|C:\Users\corra\GitHub\ubep\redcap.gpt\output\note_fup_to_check-latest.rds*C:\Users\corra\GitHub\ubep\redcap.gpt\output\comments_fup_to_check-latest.rds*C:\Users\corra\GitHub\ubep\redcap.gpt\output\details_fup_to_check-latest.rds|t20119.484150986s|s101860b|101860|file|local|vector|||0.266||
 add_check_to_varnames|function|6638ce69d9bbbf1e
 compose_sys_context|function|e255709ddb8b2ea5
-compose_usr_instructions|function|925bea3b1e7fdd3d
+compose_usr_instructions|function|e4d29d8edbe460b4
 compose_final_closing|function|715f9353a6566589
 compose_usr_closing|function|c2904e7957be3b03
-compose_sys_role|function|09abc3626c7a2092
+compose_sys_role|function|970fafabda993781
 get_redcap_token|function|1749e768f490116e
 get_redcap_uri|function|43c54afdc51d778d
 parse_checkbox|function|a8381cef4f48f486
 compose_usr_output|function|c2c1ab5bf56b7081
 params|object|7a1d0fc8e0571a7d
-.Random.seed|object|40700af3b11c89b9
+.Random.seed|object|e5169a8ea67bb0e3
 get_redcap_pid|function|5ac31653b94efd36
 parse_gpt_fctr|function|fa3495819cc24af0
-compose_usr_task|function|634eb6403839e6da
+compose_usr_task|function|e69deb74dcad4fc9
 gpt_to_tibble|function|0164062f4ad00307
-compose_usr_example|function|9f4c189ee26eb7e7
+compose_usr_example|function|18c817444d11612e
 compose_usr_style|function|68597f116f6b57ff
 share_objects|function|d146d659a714a2d7
 fetch_redcap|function|c67b6c88c682b2c7
-query_gpt_on_redcap_instrument|function|022cecec21f1b9b3
+query_gpt_on_redcap_instrument|function|6e7214105b15eea6
 fetch_form|function|626ec30b6712911e
-fup_143060|stem|18c4cd0d0995dc9d|b4952666133d59f7|42759907e290da55|-1700786069||t20119.4813403665s|s11294b|11294|qs|local|vector|||2.25||
-fup_90|stem|dadf0b84de5cbb21|5ca3b7280b293946|42759907e290da55|-50646424||t20119.4813403665s|s4335b|4335|qs|local|vector|||1.875||
-details_fup_to_be_pushed|stem|b574e2afbb9d2af2|e0bee7e859995009|47e07b624729afef|716466316||t20119.482523024s|s3818b|3818|qs|local|vector|||98.313||
-note_fup_to_be_pushed|stem|b6bfb55e62a48680|8f128190d2e02331|12a957a561c7312e|-24033393||t20119.4837116843s|s7158b|7158|qs|local|vector|||204.828||
-comments_fup_to_be_pushed|stem|37b864fcc6db548a|527ce3aaff6f189c|12a957a561c7312e|-897051934||t20119.4841471938s|s8400b|8400|qs|local|vector|||242.469||
-dbToCheck|stem|50a354435ee9d5af|55bda7b67f4fa5d7|39100b6df80b4fe4|2079670674||t20119.484147761s|s17175b|17175|qs|local|vector|||0.031||
-shareDbToCheck|stem|9aa6c72bcd4dc7ff|f0002d7b7024d7c5|a46db60f80e186d2|1580112161|C:\Users\corra\GitHub\ubep\redcap.gpt\output\note_fup_to_check-latest.rds*C:\Users\corra\GitHub\ubep\redcap.gpt\output\comments_fup_to_check-latest.rds*C:\Users\corra\GitHub\ubep\redcap.gpt\output\details_fup_to_check-latest.rds|t20119.484150986s|s101860b|101860|file|local|vector|||0.266||
+note_fup_to_be_pushed|stem|b6bfb55e62a48680|8f128190d2e02331|e53dc0f5ce33f725|-24033393||t20119.4837116843s||7158|qs|local|vector|||0.156||sumstringrstr_detectnamesdb, stringrstr_glueinstrument_text   .... is not TRUE
+comments_fup_to_be_pushed|stem|37b864fcc6db548a|527ce3aaff6f189c|e53dc0f5ce33f725|-897051934||t20119.4841471938s||8400|qs|local|vector|||0.156||sumstringrstr_detectnamesdb, stringrstr_glueinstrument_text   .... is not TRUE
+details_fup_to_be_pushed|stem|b574e2afbb9d2af2|e0bee7e859995009|88fa7b071e0669ff|716466316||t20119.482523024s||3818|qs|local|vector|||0.156||sumstringrstr_detectnamesdb, stringrstr_glueinstrument_text   .... is not TRUE
+write_note_fup|stem||ab6aa703c0b3e595|fedfd5ccac2bc002|901835287||t20139.6684536427s||0|qs|local|vector|||0||could not load dependency note_fup_to_be_pushed of target write_note_fup. Expecting a single string value typecharacter extent0.
+write_comments_fup|stem||813cd0b3bd9ec663|8fc6cb0c60d0ad2c|1309659658||t20139.6684537049s||0|qs|local|vector|||0||could not load dependency comments_fup_to_be_pushed of target write_comments_fup. Expecting a single string value typecharacter extent0.
+write_details_fup|stem||557398c0e249858b|c38c641803b07b17|-450467474||t20139.6684537538s||0|qs|local|vector|||0||could not load dependency details_fup_to_be_pushed of target write_details_fup. Expecting a single string value typecharacter extent0.

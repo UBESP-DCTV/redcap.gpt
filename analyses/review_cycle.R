@@ -4,7 +4,6 @@ library(rio)
 options(rio.import.class = "tibble")
 
 
-
 # Supporting funcitons --------------------------------------------
 merge_review <- function(reviews_raw, type = c("comments", "details", "note")) {
   type <- match.arg(type)
@@ -25,14 +24,19 @@ merge_review <- function(reviews_raw, type = c("comments", "details", "note")) {
   reviews_raw[stringr::str_detect(names(reviews_raw), type)][[1]]
 }
 
+
 get_errors <- function(gold_single, target_raw) {
   gold_single |>
     select(-ends_with("_rev1"), -ends_with("_rev2")) |>
     (\(x) set_names(x, str_remove(names(x), "^\\d+_")))() |>
     left_join(
       tar_read_raw(target_raw) |>
-        select(-ends_with("motivation"), -contains("processed_record"))
+        select(
+          # -ends_with("motivation"),
+          -contains("processed_record")
+        )
     ) |>
+    mutate(across(everything(), as.character)) |>
     pivot_longer(
       cols = -c(
         record_id, redcap_repeat_instrument, redcap_repeat_instance,
@@ -41,16 +45,25 @@ get_errors <- function(gold_single, target_raw) {
       names_to = "var",
       values_to = "value"
     ) |>
-    separate(var, into = c("var", "gold"), sep = "_(?=GOLD_STANDARD)") |>
-    mutate(
-      gold = if_else(is.na(gold), "original", "gold")
+    separate(
+      var,
+      into = c("var", "type"),
+      sep = "_((?=GOLD_STANDARD)|(?=motivation))"
     ) |>
-    pivot_wider(names_from = gold, values_from = value) |>
+    mutate(
+      var = var |> str_replace_all("_+", "_"),
+      type = if_else(is.na(type), "original", type)
+    ) |>
+    pivot_wider(names_from = type, values_from = value) |>
+    rename(gold = GOLD_STANDARD) |>
     mutate(error = original != gold) |>
     filter(error) |>
     select(-error) |>
-    rename(text = any_of(c("comments_fup", "details_fup", "note_fup")))
+    rename(
+      text = any_of(c("comments_fup", "details_fup", "note_fup"))
+    )
 }
+
 
 # data ------------------------------------------------------------
 dir_last_cycle <- here("data-raw") |>

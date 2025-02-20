@@ -4,10 +4,10 @@
 #' @param instrument (chr) The REDCap instrument of the form to query.
 #' @param model (chr, default: "gpt-4o-mini") The GPT model to use.
 #' @param seed (int, default: 1234) The seed for the GPT model.
-#' @param query_on_all_records (lgl, default: FALSE) If TRUE, the 
-#'   content of the "text_processed_record" variable (which mark if a 
-#'   record has already been processed) will be ignored. If FALSE 
-#'   (default) only records not marked as already processed will be 
+#' @param query_on_all_records (lgl, default: FALSE) If TRUE, the
+#'   content of the "text_processed_record" variable (which mark if a
+#'   record has already been processed) will be ignored. If FALSE
+#'   (default) only records not marked as already processed will be
 #'   considered.
 #'
 #' @return (tbl_df) The REDCap DB with GPT responses parsed.
@@ -24,7 +24,7 @@ query_gpt_on_redcap_instrument <- function(
   stopifnot(
     sum(stringr::str_detect(
       names(db), stringr::str_glue("{instrument}_text")
-    )) == 25
+    )) == 27
   )
 
   db_to_query <- db |>
@@ -39,7 +39,7 @@ query_gpt_on_redcap_instrument <- function(
       query_on_all_records | !.data[[
         stringr::str_c(instrument, "_text_processed_record___1")
       ]]
-    ) |> 
+    ) |>
       dplyr::rename(
         redcap_repeat_instrument = dplyr::all_of("redcap_form_name"),
         redcap_repeat_instance = dplyr::all_of("redcap_form_instance")
@@ -54,7 +54,7 @@ query_gpt_on_redcap_instrument <- function(
         )
     )
   }
-  
+
   sys <- gpteasyr::compose_sys_prompt(
     role = compose_sys_role(),
     context = compose_sys_context()
@@ -69,18 +69,22 @@ query_gpt_on_redcap_instrument <- function(
     delimiter = "#####"
   )
 
-  db_queried <- db_to_query |>
-    gpteasyr::query_gpt_on_column(
-      instrument,
-       sys, usr,
-       closing = compose_final_closing(),
-       model = model,
-       seed = seed
-    ) |>
-    dplyr::mutate(
-      gpt_res = purrr::map(.data[["gpt_res"]], gpt_to_tibble)
-    ) |>
-    tidyr::unnest(cols = dplyr::all_of("gpt_res"))
+  httr::with_config(
+    httr::config(connecttimeout = 60, timeout = 60),
+    db_queried <- db_to_query |>
+      gpteasyr::query_gpt_on_column(
+        instrument,
+         sys, usr,
+         closing = compose_final_closing(),
+         model = model,
+         seed = seed,
+        max_try = 2
+      ) |>
+      dplyr::mutate(
+        gpt_res = purrr::map(.data[["gpt_res"]], gpt_to_tibble)
+      ) |>
+      tidyr::unnest(cols = dplyr::all_of("gpt_res"))
+  )
 
   calmo_response <- stringr::str_glue("{instrument}_text_feeling___1")
   calmo_motivation <- stringr::str_glue("{instrument}_text_feeling_1_motivation")
@@ -94,7 +98,9 @@ query_gpt_on_redcap_instrument <- function(
   demotivato_motivation <- stringr::str_glue("{instrument}_text_feeling_5_motivation")
   stanco_response <- stringr::str_glue("{instrument}_text_feeling___6")
   stanco_motivation <- stringr::str_glue("{instrument}_text_feeling_6_motivation")
-  
+  dolorante_response <- stringr::str_glue("{instrument}_text_feeling___7")
+  dolorante_motivation <- stringr::str_glue("{instrument}_text_feeling_7_motivation")
+
   mattina_response <- stringr::str_glue("{instrument}_text_daytime___1")
   mattina_motivation <- stringr::str_glue("{instrument}_text_daytime_1_motivation")
   pomeriggio_response <- stringr::str_glue("{instrument}_text_daytime___2")
@@ -131,7 +137,7 @@ query_gpt_on_redcap_instrument <- function(
         from_str = .data[["impatto_risposta"]],
         to_fct = .data[[impatto_response]]
       )
-    ) |> 
+    ) |>
     dplyr::mutate(
       !!calmo_response := .data[["sensazione_calmo_risposta"]],
       !!calmo_motivation := .data[["sensazione_calmo_motivazione"]],
@@ -145,6 +151,8 @@ query_gpt_on_redcap_instrument <- function(
       !!demotivato_motivation := .data[["sensazione_demotivato_motivazione"]],
       !!stanco_response := .data[["sensazione_stanco_risposta"]],
       !!stanco_motivation := .data[["sensazione_stanco_motivazione"]],
+      !!dolorante_response := .data[["sensazione_dolorante_risposta"]],
+      !!dolorante_motivation := .data[["sensazione_dolorante_motivazione"]],
 
       !!mattina_response := .data[["momento_mattina_risposta"]],
       !!mattina_motivation := .data[["momento_mattina_motivazione"]],
@@ -154,7 +162,7 @@ query_gpt_on_redcap_instrument <- function(
       !!sera_motivation := .data[["momento_sera_motivazione"]],
       !!notte_response := .data[["momento_notte_risposta"]],
       !!notte_motivation := .data[["momento_notte_motivazione"]],
-      
+
       !!andamento_response := .data[["andamento_risposta"]],
       !!andamento_motivation := .data[["andamento_motivazione"]],
       !!impatto_response := .data[["impatto_risposta"]],
@@ -173,6 +181,8 @@ query_gpt_on_redcap_instrument <- function(
       "sensazione_demotivato_motivazione",
       "sensazione_stanco_risposta",
       "sensazione_stanco_motivazione",
+      "sensazione_dolorante_risposta",
+      "sensazione_dolorante_motivazione",
       "momento_mattina_risposta",
       "momento_mattina_motivazione",
       "momento_pomeriggio_risposta",

@@ -1,8 +1,9 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-fup_143060|stem|18c4cd0d0995dc9d|b4952666133d59f7|42759907e290da55|-1700786069||t20119.4813403665s|s11294b|11294|qs|local|vector|||2.25||
-fup_90|stem|dadf0b84de5cbb21|5ca3b7280b293946|42759907e290da55|-50646424||t20119.4813403665s|s4335b|4335|qs|local|vector|||1.875||
-dbToCheck|stem|50a354435ee9d5af|55bda7b67f4fa5d7|39100b6df80b4fe4|2079670674||t20119.484147761s|s17175b|17175|qs|local|vector|||0.031||
-shareDbToCheck|stem|9aa6c72bcd4dc7ff|f0002d7b7024d7c5|a46db60f80e186d2|1580112161|C:\Users\corra\GitHub\ubep\redcap.gpt\output\note_fup_to_check-latest.rds*C:\Users\corra\GitHub\ubep\redcap.gpt\output\comments_fup_to_check-latest.rds*C:\Users\corra\GitHub\ubep\redcap.gpt\output\details_fup_to_check-latest.rds|t20119.484150986s|s101860b|101860|file|local|vector|||0.266||
+write_details_fup|stem||557398c0e249858b|a0fa8d985254cc84|-450467474||t20139.6684537538s||0|qs|local|vector|||0||could not load dependency details_fup_to_be_pushed of target write_details_fup. Expecting a single string value typecharacter extent0.
+shareDbToCheck|stem|7c5618f40fddf359|f0002d7b7024d7c5|39c32178e9151672|1580112161|C:\Users\corra\GitHub\ubep\redcap.gpt\output\note_fup_to_check-latest.rds*C:\Users\corra\GitHub\ubep\redcap.gpt\output\comments_fup_to_check-latest.rds*C:\Users\corra\GitHub\ubep\redcap.gpt\output\details_fup_to_check-latest.rds|t20139.857211122s|s108640b|108640|file|local|vector|||0.25||
+details_fup_to_be_pushed|stem|0de6ecc3c6d0f8d0|a84cf8ac58d55ee3|d5c989ec27dc8287|716466316||t20139.8603163615s|s3382b|3382|qs|local|vector|||149.328||
+write_comments_fup|stem||813cd0b3bd9ec663|43962a4af624e36e|1309659658||t20139.6684537049s||0|qs|local|vector|||0.016||could not load dependency comments_fup_to_be_pushed of target write_comments_fup. Expecting a single string value typecharacter extent0.
+comments_fup_to_be_pushed|stem|ef181a1f73aa8eb4|e6467a5b78b7720d|2067407527dd526a|-897051934||t20139.9456863498s|s7251b|7251|qs|local|vector|||276.453||
 add_check_to_varnames|function|6638ce69d9bbbf1e
 compose_sys_context|function|e255709ddb8b2ea5
 compose_usr_instructions|function|e4d29d8edbe460b4
@@ -13,8 +14,8 @@ get_redcap_token|function|1749e768f490116e
 get_redcap_uri|function|43c54afdc51d778d
 parse_checkbox|function|a8381cef4f48f486
 compose_usr_output|function|c2c1ab5bf56b7081
-params|object|7a1d0fc8e0571a7d
-.Random.seed|object|e5169a8ea67bb0e3
+params|object|4c6debdc6ed8e749
+.Random.seed|object|a8dcd70a2aadc972
 get_redcap_pid|function|5ac31653b94efd36
 parse_gpt_fctr|function|fa3495819cc24af0
 compose_usr_task|function|e69deb74dcad4fc9
@@ -25,9 +26,8 @@ share_objects|function|d146d659a714a2d7
 fetch_redcap|function|c67b6c88c682b2c7
 query_gpt_on_redcap_instrument|function|6e7214105b15eea6
 fetch_form|function|626ec30b6712911e
-note_fup_to_be_pushed|stem|b6bfb55e62a48680|8f128190d2e02331|e53dc0f5ce33f725|-24033393||t20119.4837116843s||7158|qs|local|vector|||0.156||sumstringrstr_detectnamesdb, stringrstr_glueinstrument_text   .... is not TRUE
-comments_fup_to_be_pushed|stem|37b864fcc6db548a|527ce3aaff6f189c|e53dc0f5ce33f725|-897051934||t20119.4841471938s||8400|qs|local|vector|||0.156||sumstringrstr_detectnamesdb, stringrstr_glueinstrument_text   .... is not TRUE
-details_fup_to_be_pushed|stem|b574e2afbb9d2af2|e0bee7e859995009|88fa7b071e0669ff|716466316||t20119.482523024s||3818|qs|local|vector|||0.156||sumstringrstr_detectnamesdb, stringrstr_glueinstrument_text   .... is not TRUE
-write_note_fup|stem||ab6aa703c0b3e595|fedfd5ccac2bc002|901835287||t20139.6684536427s||0|qs|local|vector|||0||could not load dependency note_fup_to_be_pushed of target write_note_fup. Expecting a single string value typecharacter extent0.
-write_comments_fup|stem||813cd0b3bd9ec663|8fc6cb0c60d0ad2c|1309659658||t20139.6684537049s||0|qs|local|vector|||0||could not load dependency comments_fup_to_be_pushed of target write_comments_fup. Expecting a single string value typecharacter extent0.
-write_details_fup|stem||557398c0e249858b|c38c641803b07b17|-450467474||t20139.6684537538s||0|qs|local|vector|||0||could not load dependency details_fup_to_be_pushed of target write_details_fup. Expecting a single string value typecharacter extent0.
+fup_90|stem|6c0fde161b5067dd|5ca3b7280b293946|42759907e290da55|-50646424||t20140.0121949929s|s4451b|4451|qs|local|vector|||3.813||
+fup_143060|stem|1d69f88ba62f073d|b4952666133d59f7|42759907e290da55|-1700786069||t20140.0121972544s|s11153b|11153|qs|local|vector|||4.078||
+note_fup_to_be_pushed|stem|b12e301754ce9e9e|ec61b9fa563c4860|2067407527dd526a|-24033393||t20139.7040089355s||7092|qs|local|vector|||191.61||ℹ In argument gpt_res  purrrmap.datagpt_res,  gpt_to_tibble.Caused by error in purrrmapℹ In index 17.Caused by error lexical error invalid char in json text.                                       Mi dispiace, ma sembra che non                      right here 
+dbToCheck|stem|56f5cad9b58be6cf|55bda7b67f4fa5d7|10ddc95224cda36a|2079670674||t20139.7140138382s||17280|qs|local|vector|||0||could not load dependency note_fup_to_be_pushed of target dbToCheck. Expecting a single string value typecharacter extent0.
+write_note_fup|stem||ab6aa703c0b3e595|8ec7f313d3dfc87a|901835287||t20139.6684536427s||0|qs|local|vector|||0.016||could not load dependency note_fup_to_be_pushed of target write_note_fup. Expecting a single string value typecharacter extent0.

@@ -11,8 +11,8 @@ tar_option_set(
   workspace_on_error = TRUE,
   # parallel processing
   controller = crew::crew_controller_local(
-    workers = 3,
-    seconds_idle = 60
+    name = "REDCap crew controller",
+    workers = 1
   ),
   # reproducibility
   seed = 1234
@@ -23,24 +23,28 @@ tar_source()
 
 params <- list(
   query_on_all_records = TRUE,
-  write_on_redcap = FALSE
+  write_on_redcap = FALSE,
+  model = "gpt-4o"
 )
 
 list(
   tar_target(
     name = fup_143060,
-    command = fetch_form("followup_postoperatorio_14_30_60_giorno_po")
+    command = fetch_form("followup_postoperatorio_14_30_60_giorno_po"),
+    cue = tar_cue("always")
   ),
   tar_target(
     name = fup_90,
-    command = fetch_form("visita_followup_postoperatorio_90_giorno_po")
+    command = fetch_form("visita_followup_postoperatorio_90_giorno_po"),
+    cue = tar_cue("always")
   ),
   tar_target(
     name = note_fup_to_be_pushed,
     command = fup_143060 |>
       query_gpt_on_redcap_instrument(
         "note_fup",
-        query_on_all_records = params[["query_on_all_records"]]
+        query_on_all_records = params[["query_on_all_records"]],
+        model = params[["model"]]
       )
   ),
   tar_target(
@@ -48,7 +52,8 @@ list(
     command = fup_143060 |>
       query_gpt_on_redcap_instrument(
         "comments_fup",
-        query_on_all_records = params[["query_on_all_records"]]
+        query_on_all_records = params[["query_on_all_records"]],
+        model = params[["model"]]
       )
   ),
   tar_target(
@@ -56,7 +61,8 @@ list(
     command = fup_90 |>
       query_gpt_on_redcap_instrument(
         "details_fup",
-        query_on_all_records = params[["query_on_all_records"]]
+        query_on_all_records = params[["query_on_all_records"]],
+        model = params[["model"]]
       )
   ),
   tar_skip(

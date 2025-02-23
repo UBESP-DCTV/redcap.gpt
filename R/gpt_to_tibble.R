@@ -5,10 +5,17 @@
 #' @return (tbl_df) The GPT tibble.
 #' @export
 gpt_to_tibble <- function(gpt_json) {
-  gpt_json |>
-    stringr::str_remove_all("```(json)?") |>
-    stringr::str_squish() |>
-    jsonlite::fromJSON() |>
-    purrr::list_flatten() |>
-    dplyr::bind_cols()
+  tryCatch(
+    gpt_json |>
+      stringr::str_remove_all("```(json)?") |>
+      stringr::str_squish() |>
+      jsonlite::fromJSON() |>
+      purrr::list_flatten() |>
+      dplyr::bind_cols(),
+    error = function(e) {
+      message("Error: ", e$message)
+      print(gpt_json)
+      NULL
+    }
+  )
 }

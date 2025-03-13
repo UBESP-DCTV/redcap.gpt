@@ -7,12 +7,12 @@ tar_option_set(
   # fast data formats
   format = "qs",
   # error handling
-  error = "continue",
+  error = "abridge", # "continue",
   workspace_on_error = TRUE,
   # parallel processing
   controller = crew::crew_controller_local(
     name = "REDCap crew controller",
-    workers = 1
+    workers = 8
   ),
   # reproducibility
   seed = 1234
@@ -24,7 +24,7 @@ tar_source()
 params <- list(
   query_on_all_records = TRUE,
   write_on_redcap = FALSE,
-  model = "gpt-4o"
+  model = "gpt-4o-mini"
 )
 
 list(
@@ -110,7 +110,9 @@ list(
     ) |>
       discard(is.null) |>
       map(add_check_to_varnames) |>
-      (\(x) x |> set_names(paste0(names(x), "_to_check")))()
+      (\(x) x |> set_names(
+        paste0(names(x), "-", params[["model"]], "-to_check"))
+      )()
   ),
   tar_target(
     shareDbToCheck,

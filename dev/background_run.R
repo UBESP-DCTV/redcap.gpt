@@ -4,11 +4,7 @@ reporter <- "summary"
 
 usethis::ui_info("Start: {tic <- lubridate::now()}")
 
-targets::tar_make(
-  reporter = reporter,
-  seconds_meta_append = 1.5,
-  seconds_reporter = 0.5
-)
+targets::tar_make(reporter = reporter)
 
 usethis::ui_info("End: {toc <- lubridate::now()}")
 usethis::ui_info(

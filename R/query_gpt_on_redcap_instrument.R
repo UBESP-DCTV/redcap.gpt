@@ -65,8 +65,7 @@ query_gpt_on_redcap_instrument <- function(
     output = compose_usr_output(),
     style = compose_usr_style(),
     examples = compose_usr_example(),
-    closing = compose_usr_closing(),
-    delimiter = "#####"
+    closing = compose_usr_closing()
   )
 
   httr::with_config(

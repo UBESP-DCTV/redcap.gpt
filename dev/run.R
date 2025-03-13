@@ -5,9 +5,7 @@
     reporter = c("summary", "verbose_positives", "verbose"),
     check = TRUE,
     check_targets_only = TRUE,
-    save_all = TRUE,
-    seconds_meta_append = 1.5,
-    seconds_reporter = 0.5,
+    save_all = TRUE
     force = FALSE
 ) {
   if (interactive() || force) {
@@ -35,11 +33,7 @@
       usethis::ui_yeah("Do you want to make your pipeline?")
     ) {
       usethis::ui_todo("Make your pipeline.")
-      targets::tar_make(
-        reporter = reporter,
-        seconds_meta_append = seconds_meta_append,
-        seconds_reporter = seconds_reporter
-      )
+      targets::tar_make(reporter = reporter)
       usethis::ui_todo("Review the updated status.")
       targets::tar_visnetwork(targets_only = TRUE, outdated = FALSE) |>
         print()

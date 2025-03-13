@@ -11,7 +11,7 @@ compose_usr_task <- function() {
 }
 
 compose_usr_instructions <- function() {
-  "Dal testo fornito dal soggetto, riportato qui di seguito tra la coppia di delimitatori `#####`, estrai le seguenti informazioni in modo coerente con il quadro clinico (tenendo conto che si tratta di testo scritto durante il post-operatorio):
+  'Dal testo fornito dal soggetto, riportato qui di seguito tra la coppia di delimitatori `"""`, estrai le seguenti informazioni in modo coerente con il quadro clinico (tenendo conto che si tratta di testo scritto durante il post-operatorio):
     - [sensazione_calmo]: basandosi sul tono/stile e su quanto esplicitamente scritto, il soggetto sembra calmo/tranquillo/sereno? - {si/no}
     - [sensazione_irritato]: basandosi sul tono/stile e su quanto esplicitamente scritto, il soggetto sembra irritato/infastidito? - {si/no}
     - [sensazione_ansioso]: basandosi sul tono/stile e su quanto esplicitamente scritto, il soggetto sembra ansioso/preoccupato/nervoso? - {si/no}
@@ -23,9 +23,9 @@ compose_usr_instructions <- function() {
     - [momento_pomeriggio]: ci sono sensazioni che nella descrizione sono state collocate (esplicitamente) al pomeriggio? - {si/no}
     - [momento_sera]: ci sono sensazioni che nella descrizione sono state collocate (esplicitamente) alla sera? - {si/no}
     - [momento_notte]: ci sono sensazioni che nella descrizione sono state collocate (esplicitamente) nella notte? - {si/no}
-    - [andamento]: ci sono elementi per valutare l'andamento post-operatorio? Se si, valutalo. - {si-peggiore/si-migliore/si-costante/si-altalenante/no-NA}
-    - [impatto]: qual è l'impatto riferito nel recupero delle normali attività? - {nessuno (attività regolari) / leggero (disagio nel condurre le attività) / moderato (limitazioni nel condurre le attività) / grave (impedimenti nel condurre le attività) / critico (impossibilità di condurre le attività) / non-riferito}
-  "
+    - [andamento]: ci sono elementi per valutare l\'andamento post-operatorio? Se si, valutalo. - {si-peggiore/si-migliore/si-costante/si-altalenante/no-NA}
+    - [impatto]: qual è l\'impatto riferito nel recupero delle normali attività? - {nessuno (attività regolari) / leggero (disagio nel condurre le attività) / moderato (limitazioni nel condurre le attività) / grave (impedimenti nel condurre le attività) / critico (impossibilità di condurre le attività) / non-riferito}
+  '
 }
 
 compose_usr_output <- function() {

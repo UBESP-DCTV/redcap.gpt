@@ -9,17 +9,24 @@
 #'
 #' @examples
 #' \donttest{
-#'   fetch_form("followup_postoperatorio_14_30_60_giorno_po") |>
-#'     str(0)
+#' fetch_form("followup_postoperatorio_14_30_60_giorno_po") |>
+#'   str(0)
 #' }
 fetch_form <- function(
-  form,
-  .uri = get_redcap_uri(),
-  .token = get_redcap_token()
-) {
+    form,
+    .uri = get_redcap_uri(),
+    .token = get_redcap_token()) {
   checkmate::assert_string(form)
+  checkmate::assert_set_equal(
+    REDCapR::redcap_project_info_read(
+      .uri, .token,
+      verbose = FALSE
+    )[["data"]][["project_id"]],
+    get_redcap_pid() |> as.numeric()
+  )
+
   fetch_redcap(.uri = .uri, .token = .token, forms = form) |>
-    REDCapTidieR::extract_tibble(form) |> 
+    REDCapTidieR::extract_tibble(form) |>
     dplyr::mutate(
       redcap_form_name = form,
       .before = dplyr::everything()
@@ -37,22 +44,21 @@ fetch_form <- function(
 #'
 #' @examples
 #' \donttest{
-#'   fetch_redcap() |>
-#'     str(1)
+#' fetch_redcap() |>
+#'   str(1)
 #'
-#'   fetch_redcap(
-#'     forms = c(
-#'       "followup_postoperatorio_14_30_60_giorno_po",
-#'       "visita_followup_postoperatorio_90_giorno_po"
-#'     )
-#'   ) |>
-#'     str(1)
+#' fetch_redcap(
+#'   forms = c(
+#'     "followup_postoperatorio_14_30_60_giorno_po",
+#'     "visita_followup_postoperatorio_90_giorno_po"
+#'   )
+#' ) |>
+#'   str(1)
 #' }
 fetch_redcap <- function(
-  .uri = get_redcap_uri(),
-  .token = get_redcap_token(),
-  forms = NULL
-) {
+    .uri = get_redcap_uri(),
+    .token = get_redcap_token(),
+    forms = NULL) {
   REDCapTidieR::read_redcap(
     redcap_uri = .uri,
     token = .token,

@@ -1,8 +1,8 @@
 pandoc: 3.1.11
-pkgdown: 2.1.0
+pkgdown: 2.1.3
 pkgdown_sha: ~
 articles: {}
-last_built: 2024-09-10T04:04Z
+last_built: 2025-05-25T18:54Z
 urls:
   reference: https://ubesp-dctv.github.io/redcap.gpt/reference
   article: https://ubesp-dctv.github.io/redcap.gpt/articles
